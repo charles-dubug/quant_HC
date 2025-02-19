@@ -1,35 +1,28 @@
-# quant_HC
+# 架构设计
 
-# 📝 To-Do List
+## 盘前，盘后
+- 数据/信息收集
+    - Web Search：新闻
+    - 爬虫：宏观数据（金价等）
+    - Prompt Engineering：全球市场变化（港、美为主）
+- 预测市场状态+选板块（deepseek R1）
+    - 调用RAG
+        - 盘前数据
+        - 全国大方向政策
+        - 个人判断/内幕信息
+- 由板块中选股
+    - 列出公司表格；查看公司新闻、政策、财务情况等
+    - 结合RAG和模型预测，选取股票
 
-## 📌 Autonomous financial news feed analysis and summary
-- [ ] Python web scraping for financial news articles from various sources
-    - HKEX Official Website: https://www.hkex.com.hk/?sc_lang=en&utm_source=chatgpt.com
-    - AAStocks Financial News: http://www.aastocks.com/en/stocks/news/aafn
-    - South China Morning Post: https://www.scmp.com/business/markets
-    - Reuters: https://www.reuters.com/markets/asia/
-    - Bloomberg: https://www.bloomberg.com/asia/
-    - Yahoo Finance: https://hk.finance.yahoo.com/
-    - More sources to be added as needed.
-- [ ] Natural Language Processing (NLP) for summarizing the news articles
-    - To be discussed. Consider using libraries like NLTK, spaCy, or transformers for summarization.
-- [ ] Sentiment analysis of the summarized news articles
-
-## 💡 Real-time market data monitoring
-- [ ] Integration with financial APIs (e.g., Yahoo Finance API, Alpha Vantage)
-
-## ⚡ Trading strategy analysis using DeepSeek R1
-- [ ] Memory preservation using Retrieval-Augmented Generation (RAG)
-    - LLM Workflow
-        - Initial evaluation of the prompt (real-time data), give feedback on what strategies to consider
-        - Search for the specific strategies in the knowledge base, and start the second round of reasoning.
-- [ ] Prompt Engineering 
-    - Split output into thinking, analysis, and weight decision. 
-
-## ✅ Reinforcement learning model for trading strategy application
-- [ ] Training on historical data
-- [ ] Backtesting the model
+## 盘中
+- 交易
+    - 选中股票进行买卖
+    - 已有持仓的股票进行调整（止损/止盈）
+- 调用RAG并结合deepseek R1推理策略
+    - 长线交易策略
+    - 短线交易策略
+    - 后期加上期权、对冲等。
+- 每5-10分钟更新一次数据，调用RAG和模型预测，进行实时调整。
+- 接入交易所API，实现实时自动买卖。
 
 
-## 🎯 Notes
-- Additional information or reminders here.
