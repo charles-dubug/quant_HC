@@ -20,7 +20,9 @@
 
 ## ⚡ Trading strategy analysis using DeepSeek R1
 - [ ] Memory preservation using Retrieval-Augmented Generation (RAG)
-    - Hold knowledge regarding trading strategies and market conditions over time.
+    - LLM Workflow
+        - Initial evaluation of the prompt (real-time data), give feedback on what strategies to consider
+        - Search for the specific strategies in the knowledge base, and start the second round of reasoning.
 - [ ] Prompt Engineering 
     - Split output into thinking, analysis, and weight decision. 
 
