@@ -3,7 +3,7 @@ from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from pydantic import BaseModel
 from prompts import news_cn_tech, news_cn_consumer, news_cn_entertainment, news_cn_policy, news_cn_social, news_us_stock
 
-client = genai.Client(api_key="AIzaSyBg6j4CsCajX-eV_UTfaFLZnioBKS0n0EE")
+client = genai.Client(api_key="You API key")
 model_id = "gemini-2.0-flash"
 
 google_search_tool = Tool(
