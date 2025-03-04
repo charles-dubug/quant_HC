@@ -6,8 +6,8 @@ from prompts import news_cn_tech, news_analysis
 import json
 from datetime import datetime, timedelta
 
-gemini_client = genai.Client(api_key="AIzaSyDyjPWkFITUznVj4rEIO0fZtWviLeL3OEk")
-deepseek_client = OpenAI(api_key="sk-8fa35c94c4754b58ba9a9c0c83c79753", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key="***")
+deepseek_client = OpenAI(api_key="sk-***", base_url="https://api.deepseek.com")
 
 model_id = "gemini-2.0-flash"
 
