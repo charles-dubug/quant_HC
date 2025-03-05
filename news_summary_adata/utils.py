@@ -381,3 +381,55 @@ def stock_capital_flow_df_to_json(dataframe):
     }
     
     return result
+
+def compute_stock_ratings(predictions_file, stock_concept_map_file, top_n=500):
+    """
+    Compute stock ratings based on the average rating of their related concepts.
+    
+    Args:
+        predictions_file (str): Path to the predictions.json file
+        stock_concept_map_file (str): Path to the stock_concept_map.json file
+        top_n (int): Number of top stocks to return
+        
+    Returns:
+        list: List of tuples (stock_code, rating) for the top N stocks
+    """
+    # Load the predictions data
+    with open(predictions_file, 'r', encoding='utf-8') as f:
+        predictions_data = json.load(f)
+    
+    # Create a dictionary of concept ratings
+    concept_ratings = {}
+    for item in predictions_data:
+        concept_code = item['index_code']
+        rating = item['prediction']
+        concept_ratings[concept_code] = rating
+    
+    # Load the stock concept map
+    with open(stock_concept_map_file, 'r', encoding='utf-8') as f:
+        stock_concept_map = json.load(f)
+    
+    # Compute the rating for each stock
+    stock_ratings = {}
+    for stock_code, concepts in stock_concept_map.items():
+        if not concepts:  # Skip stocks with no concepts
+            continue
+        
+        # Calculate the average rating of the stock's concepts
+        total_rating = 0
+        valid_concepts = 0
+        
+        for concept in concepts:
+            if concept in concept_ratings:
+                total_rating += concept_ratings[concept]
+                valid_concepts += 1
+        
+        # Only calculate average if there are valid concepts
+        if valid_concepts > 0:
+            avg_rating = total_rating / valid_concepts
+            stock_ratings[stock_code] = avg_rating
+    
+    # Sort stocks by rating in descending order and get the top N
+    top_stocks = sorted(stock_ratings.items(), key=lambda x: x[1], reverse=True)[:top_n]
+    
+    return top_stocks
