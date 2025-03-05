@@ -5,6 +5,7 @@ import datetime
 import concurrent.futures
 import time
 import signal
+from tqdm import tqdm
 
 file_path = r"f:\AI\quant_HC\news_summary_adata\capital_flow_restructured.json"
 
@@ -57,19 +58,28 @@ try:
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_data = {executor.submit(process_data, data): data for data in data_to_process}
         
+        # Create progress bar
+        total_items = len(data_to_process)
+        completed = 0
+        pbar = tqdm(total=total_items, desc="Processing boards", unit="board")
+        
         for future in concurrent.futures.as_completed(future_to_data):
             data = future_to_data[future]
             try:
                 prediction = future.result()
                 if prediction:
                     predictions.append(prediction)
-                    # print(f"Processed {prediction['index_name']}")
+                    completed += 1
+                    pbar.update(1)
+                    pbar.set_postfix({"completed": f"{completed}/{total_items}", "percent": f"{completed/total_items*100:.1f}%"})
                     
                     # Save after each successful prediction to avoid data loss
                     with open(output_file, 'w', encoding='utf-8') as f:
                         json.dump(predictions, f, ensure_ascii=False, indent=2)
             except Exception as e:
                 print(f"Exception occurred while processing {data['index_name']}: {str(e)}")
+        
+        pbar.close()
 except KeyboardInterrupt:
     print("\nGracefully shutting down... Saving current progress...")
     # Final save of all predictions

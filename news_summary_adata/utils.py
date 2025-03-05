@@ -2,13 +2,18 @@ from google import genai
 from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from openai import OpenAI
 from pydantic import BaseModel
+from tqdm import tqdm
 from prompts import news_cn_tech, news_analysis, data_analysis_system
+from datetime import datetime, timedelta
+import pytz
 import json
+import os
+import adata
 from datetime import datetime, timedelta
 
-gemini_client = genai.Client(api_key="AIzaSyDQiCXB60vvRfiIWczmfAKPorEP-TwtZkI")
-deepseek_client = OpenAI(api_key="sk-a92fad719daa45b4bc916809b5aa2f38", base_url="https://api.deepseek.com")
-
+gemini_client = genai.Client(api_key="AIzaSyCLrO8jQVBo_c6XarrmVSBhiZr0oLPjM94")
+deepseek_client = OpenAI(api_key="sk-08d04f54a7a6416c927546befd18ce51", base_url="https://api.deepseek.com")
+ 
 model_id = "gemini-2.0-flash"
 
 google_search_tool = Tool(
@@ -269,5 +274,110 @@ def filter_high_potential_sectors(data):
     
     return qualified_sectors
 
+def sort_predictions_by_score(input_file, output_file):
+    """
+    Sort predictions.json by prediction score from highest to lowest
+    
+    Args:
+        input_file (str): Path to the input JSON file
+        output_file (str): Path to save the sorted JSON file
+    """
+    # Read the input JSON file
+    with open(input_file, 'r', encoding='utf-8') as f:
+        predictions = json.load(f)
+    
+    # Convert prediction values to numeric if they are strings
+    for item in predictions:
+        if isinstance(item['prediction'], str) and item['prediction'].isdigit():
+            item['prediction'] = int(item['prediction'])
+    
+    # Sort predictions by prediction score (highest to lowest)
+    sorted_predictions = sorted(predictions, key=lambda x: x['prediction'], reverse=True)
+    
+    # Save the sorted predictions to the output file
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(sorted_predictions, f, ensure_ascii=False, indent=2)
+    
+    print(f"Sorted {len(sorted_predictions)} predictions by score (highest to lowest)")
+    print(f"Saved to: {output_file}")
 
+def get_date_ten_trading_days_ago():
+    """
+    Returns the date of ten trading days (excluding weekends) before the current date
+    in 'YYYY-MM-DD' format, using China Standard Time (CST).
+    
+    Returns:
+        str: Date string in 'YYYY-MM-DD' format
+    """
+    # Get current time in China Standard Time
+    china_tz = pytz.timezone('Asia/Shanghai')
+    current_time_china = datetime.now(china_tz)
+    
+    # Initialize counter for trading days
+    trading_days_count = 0
+    days_to_go_back = 0
+    
+    # Go back until we find 10 trading days
+    while trading_days_count < 10:
+        days_to_go_back += 1
+        check_date = current_time_china - timedelta(days=days_to_go_back)
+        
+        # Check if it's a weekday (0 = Monday, 6 = Sunday)
+        if check_date.weekday() < 5:  # 0-4 are weekdays
+            trading_days_count += 1
+    
+    # Calculate the target date
+    target_date = current_time_china - timedelta(days=days_to_go_back)
+    
+    # Format the date as YYYY-MM-DD
+    formatted_date = target_date.strftime('%Y-%m-%d')
+    
+    return formatted_date
 
+def get_today_date():
+    """
+    Returns today's date in 'YYYY-MM-DD' format using China Standard Time (CST).
+    
+    Returns:
+        str: Today's date string in 'YYYY-MM-DD' format
+    """
+    # Get current time in China Standard Time
+    china_tz = pytz.timezone('Asia/Shanghai')
+    current_time_china = datetime.now(china_tz)
+    
+    # Format the date as YYYY-MM-DD
+    formatted_date = current_time_china.strftime('%Y-%m-%d')
+    
+    return formatted_date
+
+# Convert DataFrame to the desired JSON structure
+def stock_capital_flow_df_to_json(dataframe):
+    """
+    Convert DataFrame to a specific JSON structure
+    """
+    if dataframe.empty:
+        return {"stock_code": "", "capital_flow": []}
+    
+    # Get the stock code from the first row
+    stock_code = dataframe['stock_code'].iloc[0]
+    
+    # Convert each row to a dictionary and build the data list
+    data_list = []
+    for _, row in dataframe.iterrows():
+        data_item = {
+            "trade_date": row['trade_date'],
+            "main_net_inflow": float(row['main_net_inflow']),
+            "sm_net_inflow": float(row['sm_net_inflow']),
+            "mid_net_inflow": float(row['mid_net_inflow']),
+            "lg_net_inflow": float(row['lg_net_inflow']),
+            "max_net_inflow": float(row['max_net_inflow'])
+        }
+        data_list.append(data_item)
+    
+    # Create the final JSON structure
+    result = {
+        "stock_code": stock_code,
+        "capital_flow": data_list
+    }
+    
+    return result
