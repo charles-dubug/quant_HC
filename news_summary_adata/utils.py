@@ -2,18 +2,41 @@ from google import genai
 from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from openai import OpenAI
 from pydantic import BaseModel
-from prompts import news_cn_tech, news_analysis
+from prompts import news_cn_tech, news_analysis, data_analysis_system
 import json
 from datetime import datetime, timedelta
 
-gemini_client = genai.Client(api_key="***")
-deepseek_client = OpenAI(api_key="sk-***", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key="AIzaSyDQiCXB60vvRfiIWczmfAKPorEP-TwtZkI")
+deepseek_client = OpenAI(api_key="sk-a92fad719daa45b4bc916809b5aa2f38", base_url="https://api.deepseek.com")
 
 model_id = "gemini-2.0-flash"
 
 google_search_tool = Tool(
     google_search = GoogleSearch()
 )
+
+def extract_json(text):
+    """
+    从API响应中提取JSON数据
+    """
+    # 提取JSON部分
+    if "```json" in text and "```" in text.split("```json", 1)[1]:
+        json_content = text.split("```json", 1)[1].split("```", 1)[0].strip()
+        try:
+            data = json.loads(json_content)
+            return data
+        except json.JSONDecodeError:
+            raise ValueError("JSON解析错误")
+    # 如果没有json标记但看起来是json内容
+    elif text.strip().startswith("[") and text.strip().endswith("]"):
+        try:
+            data = json.loads(text)
+            return data
+        except json.JSONDecodeError:
+            raise ValueError("JSON解析错误")
+    
+    # 如果没有找到有效的JSON内容
+    raise ValueError("未找到有效的JSON内容")
 
 def clean_response(response):
     for each in response.candidates[0].content.parts:
@@ -117,31 +140,33 @@ def extract_event_types(news_json_str):
             event_types.update(item["event_type"])
     return sorted(list(event_types))
 
-def analysis_with_deepseek(news_json_str, boards):
+def analysis_with_deepseek(prompt):
     """
-    使用DeepSeek API分析新闻数据
+    使用DeepSeek API分析数据
     """
-    prompt = f"以下为挑选过后的部分A股概念板块：\n{boards}\n请根据以下新闻摘要，选择并判断哪些板块为利好，哪些板块为利空\n{news_json_str}\n{news_analysis}"
-    print(prompt)
     response = deepseek_client.chat.completions.create(
         model="deepseek-reasoner",
-        messages=[
-            {"role": "system", "content": "你是一个金融分析师，你需要分析新闻数据，并判断有关板块是利好还是利空"},
-            {"role": "user", "content": prompt},
-        ],
+        messages=prompt,
         stream=False
     )
-    return response.choices[0].message.content
+    return extract_json(response.choices[0].message.content)
 
-def analysis_with_deepseek_robust(news_json_str, boards):
+def analysis_with_deepseek_robust(prompt):
     try:
-        response = analysis_with_deepseek(news_json_str, boards)
+        response = analysis_with_deepseek(prompt)
         return response
     except Exception as e:
         print(f"DeepSeek API调用失败: {e}")
         print(f"正在重试...")
-        return analysis_with_deepseek_robust(news_json_str, boards)
-        
+        return analysis_with_deepseek_robust(prompt)
+
+def get_data_analysis_prompt(data):
+    prompt = [
+          {"role": "system", "content": data_analysis_system},
+          {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
+        ]
+    return prompt
+
 def filter_high_potential_sectors(data):
     """
     基于多周期资金流数据的板块筛选函数
@@ -150,11 +175,13 @@ def filter_high_potential_sectors(data):
     qualified_sectors = []
     
     for sector in data:
+        print(sector['index_name'])
         # 获取周期数据；如果缺失，则跳过该板块
         d1 = sector.get('days_type_1')
         d5 = sector.get('days_type_5')
         d10 = sector.get('days_type_10')
         if not (d1 and d5 and d10):
+            print("数据缺失，跳过该板块")
             continue
 
         # 检查必备的字段是否存在，若缺失则跳过
@@ -162,6 +189,7 @@ def filter_high_potential_sectors(data):
         main_net_inflow_d5 = d5.get('main_net_inflow')
         flow_1 = d1.get('main_net_inflow')
         if main_net_inflow_d10 is None or main_net_inflow_d5 is None or flow_1 is None:
+            print("数据缺失，跳过该板块")
             continue
 
         # 计算关键指标
@@ -188,6 +216,7 @@ def filter_high_potential_sectors(data):
         d5_change_pct = d5.get('change_pct')
         d10_change_pct = d10.get('change_pct')
         if d1_change_pct is None or d5_change_pct is None or d10_change_pct is None:
+            print("涨跌幅数据缺失，跳过该板块")
             continue
 
         # 量价健康度验证（注意：这里调整了顺序以匹配示例数据）
@@ -208,6 +237,7 @@ def filter_high_potential_sectors(data):
         d5_main_net_inflow_rate = d5.get('main_net_inflow_rate')
         d10_main_net_inflow_rate = d10.get('main_net_inflow_rate')
         if d1_main_net_inflow_rate is None or d5_main_net_inflow_rate is None or d10_main_net_inflow_rate is None:
+            print("主力流入率数据缺失，跳过该板块")
             continue
         capital_condition = (d1_main_net_inflow_rate > 0.8 and
                              d5_main_net_inflow_rate > 0.3 and 
@@ -232,11 +262,12 @@ def filter_high_potential_sectors(data):
                     "large_capital_analysis": lg_risk_indicators
                 }
             }
+            print("符合条件")
             qualified_sectors.append(sector_data)
+        else:
+            print("不符合条件")
     
     return qualified_sectors
-
-
 
 
 
