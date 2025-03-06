@@ -3,7 +3,7 @@ from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from openai import OpenAI
 from pydantic import BaseModel
 from tqdm import tqdm
-from prompts import news_cn_tech, news_analysis, concept_analysis_system, stock_analysis_system
+from prompts import news_cn_tech, news_analysis, concept_analysis_system, stock_analysis_system, order_analysis_system
 from datetime import datetime, timedelta
 import pytz
 import json
@@ -169,20 +169,12 @@ def analysis_with_deepseek_robust(prompt):
         print(f"正在重试...")
         return analysis_with_deepseek_robust(prompt)
 
-def get_concept_analysis_prompt(data):
+def get_analysis_prompt(data, system_prompt):
     prompt = [
-          {"role": "system", "content": concept_analysis_system},
+          {"role": "system", "content": system_prompt},
           {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
         ]
     return prompt
-
-def get_stock_analysis_prompt(data):
-    prompt = [
-          {"role": "system", "content": stock_analysis_system},
-          {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
-        ]
-    return prompt
-
 
 def filter_high_potential_sectors(data):
     """
@@ -545,7 +537,7 @@ def get_selected_stock_capital_flow(stock_codes, filter=None):
 
 def process_concept(data):
     try:
-        prompt = get_concept_analysis_prompt(data)
+        prompt = get_analysis_prompt(data, concept_analysis_system)
         # print(f"Analyzing {data['index_name']} (code: {data['index_code']})...")
         prediction = analysis_with_deepseek_robust(prompt)
         prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -632,7 +624,7 @@ def concept_analysis(max_workers=3):
 
 def process_stock(data):
     try:
-        prompt = get_stock_analysis_prompt(data)
+        prompt = get_analysis_prompt(data, stock_analysis_system)
         # print(f"Analyzing {data['stock_code']}...")
         prediction = analysis_with_deepseek_robust(prompt)
         prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -646,11 +638,29 @@ def process_stock(data):
             "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         }
 
+def process_order(data):
+    try:
+        prompt = get_analysis_prompt(data, order_analysis_system)
+        # print(f"Analyzing {data['stock_code']}...")
+        prediction = analysis_with_deepseek_robust(prompt)
+        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        return prediction
+    except Exception as e:
+        print(f"Error processing {data['stock_code']}: {str(e)}")
+        return {
+            "stock_code": data.get('stock_code', ''),
+            "prediction": "",
+            "reason": f"处理失败: {str(e)}",
+            "stop_loss": "",
+            "take_profit": "",
+            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }
 
-def stock_analysis(max_workers=3):
+def stock_analysis(max_workers=3, sorted=True):
     today = get_today_date()
     capital_flow_path = f'data/{today}/stock_capital_flow.json'
     k_line_path = f'data/{today}/stock_k_line.json'
+
 
     # Load both data sources
     with open(capital_flow_path, 'r', encoding='utf-8') as file:
@@ -663,6 +673,7 @@ def stock_analysis(max_workers=3):
     k_line_dict = {item['stock_code']: item['k-line'] for item in k_line_data}
 
     output_file = f'data/{today}/stock_predictions.json'
+    output_file_sorted = f'data/{today}/stock_predictions_sorted.json'
     predictions = []
 
     if os.path.exists(output_file):
@@ -734,6 +745,9 @@ def stock_analysis(max_workers=3):
     # Final save of all predictions
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(predictions, f, ensure_ascii=False, indent=2)
+    
+    if sorted:
+        sort_predictions_by_score(output_file, output_file_sorted)
 
     print("All processing complete!")
 
@@ -859,3 +873,102 @@ def get_concept_capital_flow():
         json.dump(restructured_list, f, ensure_ascii=False, indent=2)
 
     print(f"Restructured data saved to ./data/{today}/concept_capital_flow.json with {len(restructured_list)} records")
+
+def order_analysis(max_workers=3, top_n=50):
+    today = get_today_date()
+    stock_sorted = f'./data/{today}/stock_predictions_sorted.json' 
+    with open(stock_sorted, 'r', encoding='utf-8') as f:
+        stock_analysis = json.load(f)
+    
+    # Get the top N stocks from the sorted predictions
+    top_stocks = stock_analysis[:top_n]
+    top_stock_codes = [stock['stock_code'] for stock in top_stocks]
+    
+    # Load capital flow data
+    capital_flow_path = f'./data/{today}/stock_capital_flow.json'
+    with open(capital_flow_path, 'r', encoding='utf-8') as f:
+        capital_flow_data = json.load(f)
+    
+    # Load k-line data
+    k_line_path = f'./data/{today}/stock_k_line.json'
+    with open(k_line_path, 'r', encoding='utf-8') as f:
+        k_line_data = json.load(f)
+    
+    # Create dictionaries for faster lookup
+    capital_flow_dict = {item['stock_code']: item for item in capital_flow_data}
+    k_line_dict = {item['stock_code']: item['k-line'] for item in k_line_data}
+    stock_info_dict = {item['stock_code']: item for item in stock_analysis}
+    
+    # Prepare data for further analysis
+    data_to_process = []
+    for stock_code in top_stock_codes:
+        # Get stock info from original analysis
+        stock_info = stock_info_dict.get(stock_code)
+        
+        # Get capital flow and k-line data
+        capital_flow = capital_flow_dict.get(stock_code)
+        k_line = k_line_dict.get(stock_code)
+
+        capital_flow_data = {
+            "days_type_1": capital_flow.get('days_type_1'),
+            "days_type_5": capital_flow.get('days_type_5'),
+            "days_type_10": capital_flow.get('days_type_10')
+        }
+        if not capital_flow or not k_line or not stock_info:
+            print(f"Warning: Missing data for stock {stock_code}")
+            continue
+            
+        # Create combined data with all information
+        combined_data = {
+            "stock_code": stock_code,
+            "prediction": stock_info.get('prediction'),
+            "reason": stock_info.get('reason', ''),
+            "capital_flow": capital_flow_data,
+            "k_line": k_line
+        }
+        data_to_process.append(combined_data)
+    
+    print(f"Processing {len(data_to_process)} top stocks for further analysis...")
+    
+    # Process the data in parallel, similar to stock_analysis function
+    output_file = f'data/{today}/top_{top_n}_stocks_analysis.json'
+    predictions = []
+    
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_data = {executor.submit(process_order, data): data for data in data_to_process}
+            total_items = len(data_to_process)
+            completed = 0
+            pbar = tqdm(total=total_items, desc="Processing top stocks", unit="stock")
+            
+            for future in concurrent.futures.as_completed(future_to_data):
+                data = future_to_data[future]
+                try:
+                    prediction = future.result()
+                    if prediction:
+                        
+                        predictions.append(prediction)
+                        completed += 1
+                        pbar.update(1)
+                        pbar.set_postfix({"completed": f"{completed}/{total_items}", 
+                                        "percent": f"{completed/total_items*100:.1f}%"})
+                        
+                        # Save after each successful prediction
+                        with open(output_file, 'w', encoding='utf-8') as f:
+                            json.dump(predictions, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    print(f"Exception occurred while processing {data['stock_code']}: {str(e)}")
+            
+            pbar.close()
+    except KeyboardInterrupt:
+        print("\nGracefully shutting down... Saving current progress...")
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(predictions, f, ensure_ascii=False, indent=2)
+        print("Progress saved. Program stopped.")
+        exit(0)
+
+    # Final save of all predictions
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(predictions, f, ensure_ascii=False, indent=2)
+    
+    print("Top stocks analysis complete!")
