@@ -395,7 +395,7 @@ def stock_capital_flow_df_to_json(dataframe):
     return result
 
 
-def compute_stock_ratings(top_n=500):
+def compute_stock_ratings(top_n=None):
     """
     Compute stock ratings based on the average rating of their related concepts.
     
@@ -446,20 +446,28 @@ def compute_stock_ratings(top_n=500):
             stock_ratings[stock_code] = avg_rating
     
     # Sort stocks by rating in descending order and get the top N
+    if top_n is None:
+        top_n = len(stock_ratings)
     top_stocks = sorted(stock_ratings.items(), key=lambda x: x[1], reverse=True)[:top_n]
     
-    return top_stocks
+    stock_codes = [stock[0] for stock in top_stocks]
+    return stock_codes
 
-def get_selected_stock_capital_flow(top_stocks):
+
+def get_selected_stock_capital_flow(stock_codes, filter=None):
     date = get_date_ten_trading_days_ago()
     today = get_today_date()
-    stock_codes = [stock[0] for stock in top_stocks]
 
     output_file = f'./data/{today}/stock_capital_flow.json'
 
     stocks_capital_flow = []
+    filtered_stocks = []
 
-    total_stocks = len(stock_codes)
+    if filter is not None:
+        total_stocks = filter
+    else:
+        total_stocks = len(stock_codes)
+
     completed = 0
     pbar = tqdm(total=total_stocks, desc="Processing stocks", unit="stock")
 
@@ -500,7 +508,7 @@ def get_selected_stock_capital_flow(top_stocks):
             mid_net_inflow = period_data['mid_net_inflow'].astype(float).sum().round(1)
             lg_net_inflow = period_data['lg_net_inflow'].astype(float).sum().round(1)
             max_net_inflow = period_data['max_net_inflow'].astype(float).sum().round(1)
-
+            
             # Update the dictionary
             stock_capital_flow[f"days_type_{days_type}"] = {
                 "main_net_inflow": main_net_inflow,
@@ -510,6 +518,11 @@ def get_selected_stock_capital_flow(top_stocks):
                 "max_net_inflow": max_net_inflow
             }
 
+        if filter is not None:
+            if stock_capital_flow['days_type_10']['main_net_inflow'] < 10000000:
+                continue
+        
+        filtered_stocks.append(stock_code)
         stocks_capital_flow.append(stock_capital_flow)
 
         with open(output_file, 'w', encoding='utf-8') as f:
@@ -518,11 +531,17 @@ def get_selected_stock_capital_flow(top_stocks):
         completed += 1
         pbar.update(1)
         pbar.set_postfix({"completed": f"{completed}/{total_stocks}", "percent": f"{completed/total_stocks*100:.1f}%"})
+        
+        if completed >= total_stocks:
+            break
 
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks_capital_flow, f, ensure_ascii=False, indent=2)
     
     pbar.close()
+
+    return filtered_stocks
+ 
 
 def process_concept(data):
     try:
@@ -718,10 +737,9 @@ def stock_analysis(max_workers=3):
 
     print("All processing complete!")
 
-def get_selected_stock_k(top_stocks):
+def get_selected_stock_k(stock_codes):
     date = get_date_ten_trading_days_ago()
     today = get_today_date()
-    stock_codes = [stock[0] for stock in top_stocks]
 
     output_file = f'./data/{today}/stock_k_line.json'
 
