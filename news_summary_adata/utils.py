@@ -3,12 +3,16 @@ from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from openai import OpenAI
 from pydantic import BaseModel
 from tqdm import tqdm
-from prompts import news_cn_tech, news_analysis, data_analysis_system
+from prompts import news_cn_tech, news_analysis, concept_analysis_system, stock_analysis_system
 from datetime import datetime, timedelta
 import pytz
 import json
 import os
 import adata
+import concurrent.futures
+import time
+import signal
+import pandas as pd
 from datetime import datetime, timedelta
 
 gemini_client = genai.Client(api_key="AIzaSyCLrO8jQVBo_c6XarrmVSBhiZr0oLPjM94")
@@ -165,12 +169,20 @@ def analysis_with_deepseek_robust(prompt):
         print(f"正在重试...")
         return analysis_with_deepseek_robust(prompt)
 
-def get_data_analysis_prompt(data):
+def get_concept_analysis_prompt(data):
     prompt = [
-          {"role": "system", "content": data_analysis_system},
+          {"role": "system", "content": concept_analysis_system},
           {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
         ]
     return prompt
+
+def get_stock_analysis_prompt(data):
+    prompt = [
+          {"role": "system", "content": stock_analysis_system},
+          {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
+        ]
+    return prompt
+
 
 def filter_high_potential_sectors(data):
     """
@@ -382,7 +394,8 @@ def stock_capital_flow_df_to_json(dataframe):
     
     return result
 
-def compute_stock_ratings(predictions_file, stock_concept_map_file, top_n=500):
+
+def compute_stock_ratings(top_n=500):
     """
     Compute stock ratings based on the average rating of their related concepts.
     
@@ -395,6 +408,9 @@ def compute_stock_ratings(predictions_file, stock_concept_map_file, top_n=500):
         list: List of tuples (stock_code, rating) for the top N stocks
     """
     # Load the predictions data
+    today = get_today_date()
+    predictions_file = f'data/{today}/concept_predictions.json'
+    stock_concept_map_file = r'data/stock_concept_map.json'
     with open(predictions_file, 'r', encoding='utf-8') as f:
         predictions_data = json.load(f)
     
@@ -433,3 +449,391 @@ def compute_stock_ratings(predictions_file, stock_concept_map_file, top_n=500):
     top_stocks = sorted(stock_ratings.items(), key=lambda x: x[1], reverse=True)[:top_n]
     
     return top_stocks
+
+def get_selected_stock_capital_flow(top_stocks):
+    date = get_date_ten_trading_days_ago()
+    today = get_today_date()
+    stock_codes = [stock[0] for stock in top_stocks]
+
+    output_file = f'./data/{today}/stock_capital_flow.json'
+
+    stocks_capital_flow = []
+
+    total_stocks = len(stock_codes)
+    completed = 0
+    pbar = tqdm(total=total_stocks, desc="Processing stocks", unit="stock")
+
+    for stock_code in stock_codes:
+        df = adata.stock.market.get_capital_flow(stock_code=stock_code, start_date=date, end_date=today) 
+        
+        stock_capital_flow = {
+                        "stock_code": stock_code,
+                        "days_type_1": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        },
+                        "days_type_5": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        },
+                        "days_type_10": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        }
+                    }
+        
+        for days_type in [1, 5, 10]:
+            period_data = df.head(days_type)
+
+            # Calculate sum of each metric
+            main_net_inflow = period_data['main_net_inflow'].astype(float).sum().round(1)
+            sm_net_inflow = period_data['sm_net_inflow'].astype(float).sum().round(1)
+            mid_net_inflow = period_data['mid_net_inflow'].astype(float).sum().round(1)
+            lg_net_inflow = period_data['lg_net_inflow'].astype(float).sum().round(1)
+            max_net_inflow = period_data['max_net_inflow'].astype(float).sum().round(1)
+
+            # Update the dictionary
+            stock_capital_flow[f"days_type_{days_type}"] = {
+                "main_net_inflow": main_net_inflow,
+                "sm_net_inflow": sm_net_inflow,
+                "mid_net_inflow": mid_net_inflow,
+                "lg_net_inflow": lg_net_inflow,
+                "max_net_inflow": max_net_inflow
+            }
+
+        stocks_capital_flow.append(stock_capital_flow)
+
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(stocks_capital_flow, f, ensure_ascii=False, indent=2)
+        
+        completed += 1
+        pbar.update(1)
+        pbar.set_postfix({"completed": f"{completed}/{total_stocks}", "percent": f"{completed/total_stocks*100:.1f}%"})
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(stocks_capital_flow, f, ensure_ascii=False, indent=2)
+    
+    pbar.close()
+
+def process_concept(data):
+    try:
+        prompt = get_concept_analysis_prompt(data)
+        # print(f"Analyzing {data['index_name']} (code: {data['index_code']})...")
+        prediction = analysis_with_deepseek_robust(prompt)
+        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        return prediction
+    except Exception as e:
+        print(f"Error processing {data['index_name']}: {str(e)}")
+        return {
+            "index_code": data.get('index_code', ''),
+            "index_name": data.get('index_name', ''),
+            "prediction": "",
+            "reason": f"处理失败: {str(e)}",
+            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }
+
+def concept_analysis(max_workers=3):
+    today = get_today_date()
+    file_path =  f'data/{today}/concept_capital_flow.json'
+
+    with open(file_path, 'r', encoding='utf-8') as file:
+        capital_flow_data = json.load(file)
+
+    output_file = f'data/{today}/concept_predictions.json'
+
+    predictions = []
+
+    if os.path.exists(output_file):
+        try:
+            with open(output_file, 'r', encoding='utf-8') as f:
+                predictions = json.load(f)
+            print(f"Loaded {len(predictions)} existing predictions.")
+        except json.JSONDecodeError:
+            print("Error loading existing predictions file. Starting fresh.")
+
+    data_to_process = []
+
+    for data in capital_flow_data:
+        if any(existing['index_code'] == data['index_code'] for existing in predictions):
+            print(f"Skipping {data['index_name']} (code: {data['index_code']}) - already processed")
+        else:
+            data_to_process.append(data)
+
+    print(f"Processing {len(data_to_process)} items in parallel...")
+
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_data = {executor.submit(process_concept, data): data for data in data_to_process}
+            
+            # Create progress bar
+            total_items = len(data_to_process)
+            completed = 0
+            pbar = tqdm(total=total_items, desc="Processing boards", unit="board")
+            
+            for future in concurrent.futures.as_completed(future_to_data):
+                data = future_to_data[future]
+                try:
+                    prediction = future.result()
+                    if prediction:
+                        predictions.append(prediction)
+                        completed += 1
+                        pbar.update(1)
+                        pbar.set_postfix({"completed": f"{completed}/{total_items}", "percent": f"{completed/total_items*100:.1f}%"})
+                        
+                        # Save after each successful prediction to avoid data loss
+                        with open(output_file, 'w', encoding='utf-8') as f:
+                            json.dump(predictions, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    print(f"Exception occurred while processing {data['index_name']}: {str(e)}")
+            
+            pbar.close()
+    except KeyboardInterrupt:
+        print("\nGracefully shutting down... Saving current progress...")
+        # Final save of all predictions
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(predictions, f, ensure_ascii=False, indent=2)
+        print("Progress saved. Program stopped.")
+        exit(0)
+
+    # Final save of all predictions
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(predictions, f, ensure_ascii=False, indent=2)
+
+    print("All processing complete!")
+
+
+def process_stock(data):
+    try:
+        prompt = get_stock_analysis_prompt(data)
+        # print(f"Analyzing {data['stock_code']}...")
+        prediction = analysis_with_deepseek_robust(prompt)
+        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        return prediction
+    except Exception as e:
+        print(f"Error processing {data['stock_code']}: {str(e)}")
+        return {
+            "stock_code": data.get('stock_code', ''),
+            "prediction": "",
+            "reason": f"处理失败: {str(e)}",
+            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }
+
+
+def stock_analysis(max_workers=3):
+    today = get_today_date()
+    capital_flow_path = f'data/{today}/stock_capital_flow.json'
+    k_line_path = f'data/{today}/stock_k_line.json'
+
+    # Load both data sources
+    with open(capital_flow_path, 'r', encoding='utf-8') as file:
+        capital_flow_data = json.load(file)
+    
+    with open(k_line_path, 'r', encoding='utf-8') as file:
+        k_line_data = json.load(file)
+    
+    # Create a dictionary for faster k-line data lookup
+    k_line_dict = {item['stock_code']: item['k-line'] for item in k_line_data}
+
+    output_file = f'data/{today}/stock_predictions.json'
+    predictions = []
+
+    if os.path.exists(output_file):
+        try:
+            with open(output_file, 'r', encoding='utf-8') as f:
+                predictions = json.load(f)
+            print(f"Loaded {len(predictions)} existing predictions.")
+        except json.JSONDecodeError:
+            print("Error loading existing predictions file. Starting fresh.")
+
+    # Merge data and prepare for processing
+    data_to_process = []
+    for flow_data in capital_flow_data:
+        stock_code = flow_data['stock_code']
+        
+        # Skip if already processed
+        if any(existing['stock_code'] == stock_code for existing in predictions):
+            print(f"Skipping {stock_code} - already processed")
+            continue
+        
+        # Get k-line data for this stock
+        k_line = k_line_dict.get(stock_code)
+        if k_line is None:
+            print(f"Warning: No k-line data found for {stock_code}")
+            continue
+        
+        # Merge the data
+        merged_data = {
+            "stock_code": stock_code,
+            "capital_flow": flow_data,
+            "k_line": k_line
+        }
+        data_to_process.append(merged_data)
+
+    print(f"Processing {len(data_to_process)} items in parallel...")
+
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_data = {executor.submit(process_stock, data): data for data in data_to_process}
+            total_items = len(data_to_process)
+            completed = 0
+            pbar = tqdm(total=total_items, desc="Processing stocks", unit="stock")
+            
+            for future in concurrent.futures.as_completed(future_to_data):
+                data = future_to_data[future]
+                try:
+                    prediction = future.result()
+                    if prediction:
+                        predictions.append(prediction)
+                        completed += 1
+                        pbar.update(1)
+                        pbar.set_postfix({"completed": f"{completed}/{total_items}", 
+                                        "percent": f"{completed/total_items*100:.1f}%"})
+                        
+                        # Save after each successful prediction
+                        with open(output_file, 'w', encoding='utf-8') as f:
+                            json.dump(predictions, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    print(f"Exception occurred while processing {data['stock_code']}: {str(e)}")
+            
+            pbar.close()
+    except KeyboardInterrupt:
+        print("\nGracefully shutting down... Saving current progress...")
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(predictions, f, ensure_ascii=False, indent=2)
+        print("Progress saved. Program stopped.")
+        exit(0)
+
+    # Final save of all predictions
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(predictions, f, ensure_ascii=False, indent=2)
+
+    print("All processing complete!")
+
+def get_selected_stock_k(top_stocks):
+    date = get_date_ten_trading_days_ago()
+    today = get_today_date()
+    stock_codes = [stock[0] for stock in top_stocks]
+
+    output_file = f'./data/{today}/stock_k_line.json'
+
+    stocks_k = []
+
+    total_stocks = len(stock_codes)
+    completed = 0
+    pbar = tqdm(total=total_stocks, desc="Processing stocks", unit="stock")
+
+    for stock_code in stock_codes:
+        df = adata.stock.market.get_market(stock_code=stock_code, start_date=date, end_date=today, k_type=1, adjust_type=1)
+
+        stock_k = {
+            "stock_code": stock_code,
+            "k-line": []
+        }
+
+        for _, row in df.iterrows():
+            k_line_item = {
+                "trade_date": row['trade_date'],
+                "open": float(row['open']),
+                "close": float(row['close']),
+                "high": float(row['high']),
+                "low": float(row['low']),
+                "volume": float(row['volume']),
+                "amount": float(row['amount']),
+                "change": float(row['change']),
+                "change_pct": float(row['change_pct']),
+                "turnover_ratio": float(row['turnover_ratio']),
+                "pre_close": float(row['pre_close'])
+            }
+
+            stock_k["k-line"].append(k_line_item)
+
+        stocks_k.append(stock_k)
+
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(stocks_k, f, ensure_ascii=False, indent=2)
+        
+        completed += 1
+        pbar.update(1)
+        pbar.set_postfix({"completed": f"{completed}/{total_stocks}", "percent": f"{completed/total_stocks*100:.1f}%"})
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(stocks_k, f, ensure_ascii=False, indent=2)
+
+    pbar.close()
+
+def get_concept_capital_flow(): 
+    today = get_today_date()
+    output_file = f'./data/{today}/concept_capital_flow.json'
+
+    df_1day = adata.stock.market.all_capital_flow_east(days_type=1)
+    df_5day = adata.stock.market.all_capital_flow_east(days_type=5)
+    df_10day = adata.stock.market.all_capital_flow_east(days_type=10)
+
+    # Create a dictionary to store the restructured data
+    restructured_data = {}
+
+    # Process 1-day data
+    for _, row in df_1day.iterrows():
+        index_code = row['index_code']
+        if index_code not in restructured_data:
+            restructured_data[index_code] = {
+                'index_code': index_code,
+                'index_name': row['index_name'],
+                'days_type_1': {},
+                'days_type_5': {},
+                'days_type_10': {}
+            }
+        
+        # Add all columns except index_code and index_name to days_type_1
+        days_type_1_data = {col: row[col] for col in row.index if col not in ['index_code', 'index_name']}
+        restructured_data[index_code]['days_type_1'] = days_type_1_data
+
+    # Process 5-day data
+    for _, row in df_5day.iterrows():
+        index_code = row['index_code']
+        if index_code not in restructured_data:
+            restructured_data[index_code] = {
+                'index_code': index_code,
+                'index_name': row['index_name'],
+                'days_type_1': {},
+                'days_type_5': {},
+                'days_type_10': {}
+            }
+        
+        # Add all columns except index_code and index_name to days_type_5
+        days_type_5_data = {col: row[col] for col in row.index if col not in ['index_code', 'index_name']}
+        restructured_data[index_code]['days_type_5'] = days_type_5_data
+
+    # Process 10-day data
+    for _, row in df_10day.iterrows():
+        index_code = row['index_code']
+        if index_code not in restructured_data:
+            restructured_data[index_code] = {
+                'index_code': index_code,
+                'index_name': row['index_name'],
+                'days_type_1': {},
+                'days_type_5': {},
+                'days_type_10': {}
+            }
+        
+        # Add all columns except index_code and index_name to days_type_10
+        days_type_10_data = {col: row[col] for col in row.index if col not in ['index_code', 'index_name']}
+        restructured_data[index_code]['days_type_10'] = days_type_10_data
+
+    # Convert the dictionary to a list for JSON serialization
+    restructured_list = list(restructured_data.values())
+
+    # Save to JSON file with proper encoding for Chinese characters
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(restructured_list, f, ensure_ascii=False, indent=2)
+
+    print(f"Restructured data saved to ./data/{today}/concept_capital_flow.json with {len(restructured_list)} records")
