@@ -15,8 +15,8 @@ import signal
 import pandas as pd
 from datetime import datetime, timedelta
 
-gemini_client = genai.Client(api_key="AIzaSyCLrO8jQVBo_c6XarrmVSBhiZr0oLPjM94")
-deepseek_client = OpenAI(api_key="sk-08d04f54a7a6416c927546befd18ce51", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key="AIzaSyCEFuo63h7K7ia5ZespSGEr2peFXfe1ddI")
+deepseek_client = OpenAI(api_key="sk-0f287a9998474674870e4c17c7ae6fef", base_url="https://api.deepseek.com")
  
 model_id = "gemini-2.0-flash"
 
@@ -757,7 +757,7 @@ def get_selected_stock_k(stock_codes):
             "k-line": []
         }
 
-        for _, row in df.iterrows():
+        for _, row in df.iloc[::-1].iterrows():
             k_line_item = {
                 "trade_date": row['trade_date'],
                 "open": float(row['open']),
@@ -790,6 +790,7 @@ def get_selected_stock_k(stock_codes):
 
 def get_concept_capital_flow(): 
     today = get_today_date()
+    os.makedirs(f'./data/{today}', exist_ok=True)
     output_file = f'./data/{today}/concept_capital_flow.json'
 
     df_1day = adata.stock.market.all_capital_flow_east(days_type=1)
