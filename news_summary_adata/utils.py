@@ -15,8 +15,8 @@ import signal
 import pandas as pd
 from datetime import datetime, timedelta
 
-gemini_client = genai.Client(api_key="AIzaSyCEFuo63h7K7ia5ZespSGEr2peFXfe1ddI")
-deepseek_client = OpenAI(api_key="sk-0f287a9998474674870e4c17c7ae6fef", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key="")
+deepseek_client = OpenAI(api_key="", base_url="https://api.deepseek.com")
  
 model_id = "gemini-2.0-flash"
 
@@ -794,8 +794,11 @@ def get_concept_capital_flow():
     output_file = f'./data/{today}/concept_capital_flow.json'
 
     df_1day = adata.stock.market.all_capital_flow_east(days_type=1)
+    print("1-day data loaded.")
     df_5day = adata.stock.market.all_capital_flow_east(days_type=5)
+    print("5-day data loaded.")
     df_10day = adata.stock.market.all_capital_flow_east(days_type=10)
+    print("10-day data loaded.")
 
     # Create a dictionary to store the restructured data
     restructured_data = {}

@@ -1,0 +1,2402 @@
+[
+  {
+    "stock_code": "002078",
+    "days_type_1": {
+      "main_net_inflow": -31833800.0,
+      "sm_net_inflow": 31317800.0,
+      "mid_net_inflow": 516000.0,
+      "lg_net_inflow": -16387000.0,
+      "max_net_inflow": -15446800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -24221300.0,
+      "sm_net_inflow": 20256200.0,
+      "mid_net_inflow": 3965200.0,
+      "lg_net_inflow": -48581300.0,
+      "max_net_inflow": 24360000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 26228300.0,
+      "sm_net_inflow": 221700.0,
+      "mid_net_inflow": -26449900.0,
+      "lg_net_inflow": -46026000.0,
+      "max_net_inflow": 72254400.0
+    }
+  },
+  {
+    "stock_code": "002842",
+    "days_type_1": {
+      "main_net_inflow": -10195500.0,
+      "sm_net_inflow": 8902200.0,
+      "mid_net_inflow": 1293300.0,
+      "lg_net_inflow": -7431300.0,
+      "max_net_inflow": -2764100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -10970500.0,
+      "sm_net_inflow": 28553300.0,
+      "mid_net_inflow": -17582800.0,
+      "lg_net_inflow": -7826000.0,
+      "max_net_inflow": -3144500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 38959800.0,
+      "sm_net_inflow": -14969400.0,
+      "mid_net_inflow": -23990200.0,
+      "lg_net_inflow": 15954500.0,
+      "max_net_inflow": 23005300.0
+    }
+  },
+  {
+    "stock_code": "301498",
+    "days_type_1": {
+      "main_net_inflow": -17698100.0,
+      "sm_net_inflow": 10571900.0,
+      "mid_net_inflow": 7126200.0,
+      "lg_net_inflow": -8194000.0,
+      "max_net_inflow": -9504200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -13718000.0,
+      "sm_net_inflow": 270400.0,
+      "mid_net_inflow": 13447500.0,
+      "lg_net_inflow": -16397200.0,
+      "max_net_inflow": 2679000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 23787100.0,
+      "sm_net_inflow": -59073000.0,
+      "mid_net_inflow": 35285700.0,
+      "lg_net_inflow": 25412800.0,
+      "max_net_inflow": -1625900.0
+    }
+  },
+  {
+    "stock_code": "600221",
+    "days_type_1": {
+      "main_net_inflow": 47259400.0,
+      "sm_net_inflow": -19530700.0,
+      "mid_net_inflow": -27728800.0,
+      "lg_net_inflow": -14149800.0,
+      "max_net_inflow": 61409300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -72938700.0,
+      "sm_net_inflow": 153069400.0,
+      "mid_net_inflow": -80066400.0,
+      "lg_net_inflow": -74956200.0,
+      "max_net_inflow": 1781200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 74868600.0,
+      "sm_net_inflow": 82202900.0,
+      "mid_net_inflow": -156977800.0,
+      "lg_net_inflow": 4019200.0,
+      "max_net_inflow": 70735000.0
+    }
+  },
+  {
+    "stock_code": "600280",
+    "days_type_1": {
+      "main_net_inflow": 85801600.0,
+      "sm_net_inflow": -36844300.0,
+      "mid_net_inflow": -48957400.0,
+      "lg_net_inflow": -19262500.0,
+      "max_net_inflow": 105000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 53986500.0,
+      "sm_net_inflow": 21712400.0,
+      "mid_net_inflow": -75699000.0,
+      "lg_net_inflow": -35203900.0,
+      "max_net_inflow": 89126400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 162473900.0,
+      "sm_net_inflow": -18625000.0,
+      "mid_net_inflow": -143849100.0,
+      "lg_net_inflow": -34719500.0,
+      "max_net_inflow": 197216200.0
+    }
+  },
+  {
+    "stock_code": "601010",
+    "days_type_1": {
+      "main_net_inflow": 20133400.0,
+      "sm_net_inflow": -11996200.0,
+      "mid_net_inflow": -8137200.0,
+      "lg_net_inflow": 13501600.0,
+      "max_net_inflow": 6631800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -92109100.0,
+      "sm_net_inflow": 109068500.0,
+      "mid_net_inflow": -16959400.0,
+      "lg_net_inflow": -37823800.0,
+      "max_net_inflow": -54285400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 72454500.0,
+      "sm_net_inflow": 100446200.0,
+      "mid_net_inflow": -174054000.0,
+      "lg_net_inflow": -69942300.0,
+      "max_net_inflow": 142736500.0
+    }
+  },
+  {
+    "stock_code": "603116",
+    "days_type_1": {
+      "main_net_inflow": -16332800.0,
+      "sm_net_inflow": 11518500.0,
+      "mid_net_inflow": 4814300.0,
+      "lg_net_inflow": -7623900.0,
+      "max_net_inflow": -8708900.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 7519200.0,
+      "sm_net_inflow": -1745200.0,
+      "mid_net_inflow": -5774100.0,
+      "lg_net_inflow": -29616900.0,
+      "max_net_inflow": 37136300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 64227600.0,
+      "sm_net_inflow": -58432300.0,
+      "mid_net_inflow": -5795400.0,
+      "lg_net_inflow": -19358500.0,
+      "max_net_inflow": 83586300.0
+    }
+  },
+  {
+    "stock_code": "600696",
+    "days_type_1": {
+      "main_net_inflow": 7312900.0,
+      "sm_net_inflow": -8503100.0,
+      "mid_net_inflow": 1190200.0,
+      "lg_net_inflow": 6820300.0,
+      "max_net_inflow": 492600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 99383000.0,
+      "sm_net_inflow": -12043900.0,
+      "mid_net_inflow": -87461200.0,
+      "lg_net_inflow": -21374600.0,
+      "max_net_inflow": 120569900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 69014900.0,
+      "sm_net_inflow": 40913500.0,
+      "mid_net_inflow": -110050400.0,
+      "lg_net_inflow": -50881800.0,
+      "max_net_inflow": 119709100.0
+    }
+  },
+  {
+    "stock_code": "600783",
+    "days_type_1": {
+      "main_net_inflow": 92044000.0,
+      "sm_net_inflow": -42798400.0,
+      "mid_net_inflow": -49245500.0,
+      "lg_net_inflow": 18621300.0,
+      "max_net_inflow": 73422700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 107449700.0,
+      "sm_net_inflow": -57187800.0,
+      "mid_net_inflow": -50261800.0,
+      "lg_net_inflow": 30236100.0,
+      "max_net_inflow": 77213700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 90572800.0,
+      "sm_net_inflow": -41757900.0,
+      "mid_net_inflow": -48814800.0,
+      "lg_net_inflow": 22972900.0,
+      "max_net_inflow": 67599900.0
+    }
+  },
+  {
+    "stock_code": "000809",
+    "days_type_1": {
+      "main_net_inflow": 6715300.0,
+      "sm_net_inflow": -3121500.0,
+      "mid_net_inflow": -3593700.0,
+      "lg_net_inflow": 6468200.0,
+      "max_net_inflow": 247100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 11572400.0,
+      "sm_net_inflow": -5867900.0,
+      "mid_net_inflow": -5704400.0,
+      "lg_net_inflow": 9475200.0,
+      "max_net_inflow": 2097300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10913000.0,
+      "sm_net_inflow": -2551800.0,
+      "mid_net_inflow": -8360900.0,
+      "lg_net_inflow": 10637200.0,
+      "max_net_inflow": 275900.0
+    }
+  },
+  {
+    "stock_code": "000882",
+    "days_type_1": {
+      "main_net_inflow": 34192900.0,
+      "sm_net_inflow": -15763700.0,
+      "mid_net_inflow": -18429200.0,
+      "lg_net_inflow": -11327500.0,
+      "max_net_inflow": 45520300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -104707600.0,
+      "sm_net_inflow": 140627700.0,
+      "mid_net_inflow": -36371800.0,
+      "lg_net_inflow": -57948100.0,
+      "max_net_inflow": -46307900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 73741200.0,
+      "sm_net_inflow": 81616700.0,
+      "mid_net_inflow": -156351200.0,
+      "lg_net_inflow": -74155400.0,
+      "max_net_inflow": 148133600.0
+    }
+  },
+  {
+    "stock_code": "002572",
+    "days_type_1": {
+      "main_net_inflow": 611300.0,
+      "sm_net_inflow": 2821100.0,
+      "mid_net_inflow": -3432500.0,
+      "lg_net_inflow": 22419100.0,
+      "max_net_inflow": -21807800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 16191500.0,
+      "sm_net_inflow": -42210300.0,
+      "mid_net_inflow": 26018700.0,
+      "lg_net_inflow": 55283600.0,
+      "max_net_inflow": -39092100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 26016700.0,
+      "sm_net_inflow": -86427900.0,
+      "mid_net_inflow": 60411100.0,
+      "lg_net_inflow": 34576400.0,
+      "max_net_inflow": -8559700.0
+    }
+  },
+  {
+    "stock_code": "300521",
+    "days_type_1": {
+      "main_net_inflow": 27960000.0,
+      "sm_net_inflow": -30411600.0,
+      "mid_net_inflow": 2451700.0,
+      "lg_net_inflow": 13720800.0,
+      "max_net_inflow": 14239200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 42234500.0,
+      "sm_net_inflow": -48474100.0,
+      "mid_net_inflow": 6239700.0,
+      "lg_net_inflow": 34891100.0,
+      "max_net_inflow": 7343400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 43451600.0,
+      "sm_net_inflow": -55217700.0,
+      "mid_net_inflow": 11766300.0,
+      "lg_net_inflow": 45512700.0,
+      "max_net_inflow": -2061200.0
+    }
+  },
+  {
+    "stock_code": "300618",
+    "days_type_1": {
+      "main_net_inflow": 2582200.0,
+      "sm_net_inflow": -21043800.0,
+      "mid_net_inflow": 18461600.0,
+      "lg_net_inflow": -13421100.0,
+      "max_net_inflow": 16003300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -82551700.0,
+      "sm_net_inflow": 36330800.0,
+      "mid_net_inflow": 46220900.0,
+      "lg_net_inflow": -39539800.0,
+      "max_net_inflow": -43012000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 76427300.0,
+      "sm_net_inflow": -43053000.0,
+      "mid_net_inflow": -32665500.0,
+      "lg_net_inflow": -17162800.0,
+      "max_net_inflow": 92943600.0
+    }
+  },
+  {
+    "stock_code": "300840",
+    "days_type_1": {
+      "main_net_inflow": 295000000.0,
+      "sm_net_inflow": -111000000.0,
+      "mid_net_inflow": -184000000.0,
+      "lg_net_inflow": -110000000.0,
+      "max_net_inflow": 406000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 140063900.0,
+      "sm_net_inflow": 61699600.0,
+      "mid_net_inflow": -201449200.0,
+      "lg_net_inflow": -234298200.0,
+      "max_net_inflow": 375047900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 60523200.0,
+      "sm_net_inflow": 122728700.0,
+      "mid_net_inflow": -182937500.0,
+      "lg_net_inflow": -253826100.0,
+      "max_net_inflow": 315035100.0
+    }
+  },
+  {
+    "stock_code": "600053",
+    "days_type_1": {
+      "main_net_inflow": 9255400.0,
+      "sm_net_inflow": -12008500.0,
+      "mid_net_inflow": 2753000.0,
+      "lg_net_inflow": -5723400.0,
+      "max_net_inflow": 14978800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 18629800.0,
+      "sm_net_inflow": -15398200.0,
+      "mid_net_inflow": -3231470.0,
+      "lg_net_inflow": 2138500.0,
+      "max_net_inflow": 16491200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10802100.0,
+      "sm_net_inflow": -6659700.0,
+      "mid_net_inflow": -4142070.0,
+      "lg_net_inflow": 211300.0,
+      "max_net_inflow": 10590600.0
+    }
+  },
+  {
+    "stock_code": "600732",
+    "days_type_1": {
+      "main_net_inflow": -798700.0,
+      "sm_net_inflow": 14015400.0,
+      "mid_net_inflow": -13216700.0,
+      "lg_net_inflow": -19433900.0,
+      "max_net_inflow": 18635200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -121079200.0,
+      "sm_net_inflow": 66973100.0,
+      "mid_net_inflow": 54217300.0,
+      "lg_net_inflow": 28618900.0,
+      "max_net_inflow": -150110000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 12876800.0,
+      "sm_net_inflow": 31816000.0,
+      "mid_net_inflow": -44506800.0,
+      "lg_net_inflow": 105110600.0,
+      "max_net_inflow": -92818500.0
+    }
+  },
+  {
+    "stock_code": "601882",
+    "days_type_1": {
+      "main_net_inflow": -2925000.0,
+      "sm_net_inflow": 8359600.0,
+      "mid_net_inflow": -5434500.0,
+      "lg_net_inflow": -6312100.0,
+      "max_net_inflow": 3387100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -20926900.0,
+      "sm_net_inflow": 51685000.0,
+      "mid_net_inflow": -30758000.0,
+      "lg_net_inflow": -28014000.0,
+      "max_net_inflow": 7087200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 61400100.0,
+      "sm_net_inflow": 20207900.0,
+      "mid_net_inflow": -81608000.0,
+      "lg_net_inflow": 31718900.0,
+      "max_net_inflow": 29681200.0
+    }
+  },
+  {
+    "stock_code": "603059",
+    "days_type_1": {
+      "main_net_inflow": 1134100.0,
+      "sm_net_inflow": 982200.0,
+      "mid_net_inflow": -2116300.0,
+      "lg_net_inflow": 50800.0,
+      "max_net_inflow": 1083300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 9227900.0,
+      "sm_net_inflow": -11250300.0,
+      "mid_net_inflow": 2022400.0,
+      "lg_net_inflow": 6643700.0,
+      "max_net_inflow": 2584100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 14464400.0,
+      "sm_net_inflow": -11072300.0,
+      "mid_net_inflow": -3392100.0,
+      "lg_net_inflow": 9061500.0,
+      "max_net_inflow": 5402800.0
+    }
+  },
+  {
+    "stock_code": "603198",
+    "days_type_1": {
+      "main_net_inflow": 13051500.0,
+      "sm_net_inflow": 4401600.0,
+      "mid_net_inflow": -17453100.0,
+      "lg_net_inflow": 18961800.0,
+      "max_net_inflow": -5910300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -31108000.0,
+      "sm_net_inflow": 123804700.0,
+      "mid_net_inflow": -92696600.0,
+      "lg_net_inflow": -16263400.0,
+      "max_net_inflow": -14844600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 36487100.0,
+      "sm_net_inflow": 72918200.0,
+      "mid_net_inflow": -109405100.0,
+      "lg_net_inflow": 83119100.0,
+      "max_net_inflow": -46632200.0
+    }
+  },
+  {
+    "stock_code": "603719",
+    "days_type_1": {
+      "main_net_inflow": -246900.0,
+      "sm_net_inflow": 3255600.0,
+      "mid_net_inflow": -3008700.0,
+      "lg_net_inflow": 1147400.0,
+      "max_net_inflow": -1394300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -30086000.0,
+      "sm_net_inflow": 52114200.0,
+      "mid_net_inflow": -22028200.0,
+      "lg_net_inflow": -14006800.0,
+      "max_net_inflow": -16079200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10192100.0,
+      "sm_net_inflow": 28602700.0,
+      "mid_net_inflow": -38795000.0,
+      "lg_net_inflow": -25829700.0,
+      "max_net_inflow": 36021800.0
+    }
+  },
+  {
+    "stock_code": "603912",
+    "days_type_1": {
+      "main_net_inflow": 8650400.0,
+      "sm_net_inflow": -24435900.0,
+      "mid_net_inflow": 15785600.0,
+      "lg_net_inflow": -9293100.0,
+      "max_net_inflow": 17943400.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 182324300.0,
+      "sm_net_inflow": 13970000.0,
+      "mid_net_inflow": -196430300.0,
+      "lg_net_inflow": -115569100.0,
+      "max_net_inflow": 297841400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 97898900.0,
+      "sm_net_inflow": 38241500.0,
+      "mid_net_inflow": -136276400.0,
+      "lg_net_inflow": -166118100.0,
+      "max_net_inflow": 263965100.0
+    }
+  },
+  {
+    "stock_code": "605100",
+    "days_type_1": {
+      "main_net_inflow": 155000000.0,
+      "sm_net_inflow": -81780800.0,
+      "mid_net_inflow": -73087000.0,
+      "lg_net_inflow": -34986300.0,
+      "max_net_inflow": 190000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -43972300.0,
+      "sm_net_inflow": 131944900.0,
+      "mid_net_inflow": -87840300.0,
+      "lg_net_inflow": -161094000.0,
+      "max_net_inflow": 117135400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 49626100.0,
+      "sm_net_inflow": 98398300.0,
+      "mid_net_inflow": -147892100.0,
+      "lg_net_inflow": -205699300.0,
+      "max_net_inflow": 255339100.0
+    }
+  },
+  {
+    "stock_code": "688059",
+    "days_type_1": {
+      "main_net_inflow": 3520200.0,
+      "sm_net_inflow": -4327000.0,
+      "mid_net_inflow": 806800.0,
+      "lg_net_inflow": 315000.0,
+      "max_net_inflow": 3205200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -24301000.0,
+      "sm_net_inflow": 4250500.0,
+      "mid_net_inflow": 20050700.0,
+      "lg_net_inflow": -431900.0,
+      "max_net_inflow": -23869100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 39592100.0,
+      "sm_net_inflow": -62810600.0,
+      "mid_net_inflow": 23218800.0,
+      "lg_net_inflow": 35509200.0,
+      "max_net_inflow": 4082900.0
+    }
+  },
+  {
+    "stock_code": "688280",
+    "days_type_1": {
+      "main_net_inflow": 2467200.0,
+      "sm_net_inflow": 3653100.0,
+      "mid_net_inflow": -6120200.0,
+      "lg_net_inflow": 2467200.0,
+      "max_net_inflow": 0.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -24341500.0,
+      "sm_net_inflow": 29246900.0,
+      "mid_net_inflow": -4905300.0,
+      "lg_net_inflow": -24341500.0,
+      "max_net_inflow": 0.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 24891600.0,
+      "sm_net_inflow": -36321600.0,
+      "mid_net_inflow": 11430000.0,
+      "lg_net_inflow": 24891600.0,
+      "max_net_inflow": 0.0
+    }
+  },
+  {
+    "stock_code": "688793",
+    "days_type_1": {
+      "main_net_inflow": 4404700.0,
+      "sm_net_inflow": -8835500.0,
+      "mid_net_inflow": 4430800.0,
+      "lg_net_inflow": 16397100.0,
+      "max_net_inflow": -11992300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 22650100.0,
+      "sm_net_inflow": -15461200.0,
+      "mid_net_inflow": -7188800.0,
+      "lg_net_inflow": 18537900.0,
+      "max_net_inflow": 4112200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 37683100.0,
+      "sm_net_inflow": -24202100.0,
+      "mid_net_inflow": -13480900.0,
+      "lg_net_inflow": 32232600.0,
+      "max_net_inflow": 5450415.0
+    }
+  },
+  {
+    "stock_code": "002315",
+    "days_type_1": {
+      "main_net_inflow": 330000000.0,
+      "sm_net_inflow": -124000000.0,
+      "mid_net_inflow": -206000000.0,
+      "lg_net_inflow": -38979800.0,
+      "max_net_inflow": 369000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 459865000.0,
+      "sm_net_inflow": -90028000.0,
+      "mid_net_inflow": -370441000.0,
+      "lg_net_inflow": -166696500.0,
+      "max_net_inflow": 627515400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 218873200.0,
+      "sm_net_inflow": 29495400.0,
+      "mid_net_inflow": -249011700.0,
+      "lg_net_inflow": -331135400.0,
+      "max_net_inflow": 551344900.0
+    }
+  },
+  {
+    "stock_code": "300170",
+    "days_type_1": {
+      "main_net_inflow": 1720000000.0,
+      "sm_net_inflow": -623000000.0,
+      "mid_net_inflow": -1096000000.0,
+      "lg_net_inflow": -582000000.0,
+      "max_net_inflow": 2302000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 1526069200.0,
+      "sm_net_inflow": -388630500.0,
+      "mid_net_inflow": -1137142900.0,
+      "lg_net_inflow": -839711000.0,
+      "max_net_inflow": 2366522700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 105817400.0,
+      "sm_net_inflow": 1027507100.0,
+      "mid_net_inflow": -1131010300.0,
+      "lg_net_inflow": -1518670100.0,
+      "max_net_inflow": 1624229900.0
+    }
+  },
+  {
+    "stock_code": "301165",
+    "days_type_1": {
+      "main_net_inflow": 31879600.0,
+      "sm_net_inflow": -64332000.0,
+      "mid_net_inflow": 32452400.0,
+      "lg_net_inflow": -13767600.0,
+      "max_net_inflow": 45647200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 7224400.0,
+      "sm_net_inflow": 27182600.0,
+      "mid_net_inflow": -34320900.0,
+      "lg_net_inflow": -674400.0,
+      "max_net_inflow": 7898900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 241626900.0,
+      "sm_net_inflow": -88169300.0,
+      "mid_net_inflow": -153563200.0,
+      "lg_net_inflow": 54108100.0,
+      "max_net_inflow": 186805800.0
+    }
+  },
+  {
+    "stock_code": "300058",
+    "days_type_1": {
+      "main_net_inflow": 1999000000.0,
+      "sm_net_inflow": -928000000.0,
+      "mid_net_inflow": -1071000000.0,
+      "lg_net_inflow": -189000000.0,
+      "max_net_inflow": 2189000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 1580295200.0,
+      "sm_net_inflow": -613501200.0,
+      "mid_net_inflow": -966719900.0,
+      "lg_net_inflow": -323914300.0,
+      "max_net_inflow": 1905209400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 1002459000.0,
+      "sm_net_inflow": -233093400.0,
+      "mid_net_inflow": -768442200.0,
+      "lg_net_inflow": -628947200.0,
+      "max_net_inflow": 1631786200.0
+    }
+  },
+  {
+    "stock_code": "300153",
+    "days_type_1": {
+      "main_net_inflow": 142000000.0,
+      "sm_net_inflow": -128000000.0,
+      "mid_net_inflow": -14032200.0,
+      "lg_net_inflow": 73025400.0,
+      "max_net_inflow": 68703700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 217379900.0,
+      "sm_net_inflow": -22877400.0,
+      "mid_net_inflow": -194216700.0,
+      "lg_net_inflow": 6654400.0,
+      "max_net_inflow": 209906000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 284692700.0,
+      "sm_net_inflow": 76848500.0,
+      "mid_net_inflow": -362071100.0,
+      "lg_net_inflow": -163176000.0,
+      "max_net_inflow": 447228800.0
+    }
+  },
+  {
+    "stock_code": "600622",
+    "days_type_1": {
+      "main_net_inflow": 16870500.0,
+      "sm_net_inflow": -14910800.0,
+      "mid_net_inflow": -1959800.0,
+      "lg_net_inflow": -3528400.0,
+      "max_net_inflow": 20398900.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -35080200.0,
+      "sm_net_inflow": 22896500.0,
+      "mid_net_inflow": 12183800.0,
+      "lg_net_inflow": -36077700.0,
+      "max_net_inflow": 997400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 99947900.0,
+      "sm_net_inflow": -74435500.0,
+      "mid_net_inflow": -25812300.0,
+      "lg_net_inflow": -4378400.0,
+      "max_net_inflow": 104340600.0
+    }
+  },
+  {
+    "stock_code": "301268",
+    "days_type_1": {
+      "main_net_inflow": 15293300.0,
+      "sm_net_inflow": -16200600.0,
+      "mid_net_inflow": 907300.0,
+      "lg_net_inflow": 13830500.0,
+      "max_net_inflow": 1462800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 20928000.0,
+      "sm_net_inflow": -10539400.0,
+      "mid_net_inflow": -10388800.0,
+      "lg_net_inflow": 17878800.0,
+      "max_net_inflow": 3049200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 13577500.0,
+      "sm_net_inflow": 14544300.0,
+      "mid_net_inflow": -28121900.0,
+      "lg_net_inflow": 12504300.0,
+      "max_net_inflow": 1073200.0
+    }
+  },
+  {
+    "stock_code": "600337",
+    "days_type_1": {
+      "main_net_inflow": 578700.0,
+      "sm_net_inflow": -1469000.0,
+      "mid_net_inflow": 890300.0,
+      "lg_net_inflow": 1309300.0,
+      "max_net_inflow": -730600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 9459500.0,
+      "sm_net_inflow": -118100.0,
+      "mid_net_inflow": -9341400.0,
+      "lg_net_inflow": 16009400.0,
+      "max_net_inflow": -6549900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 32765700.0,
+      "sm_net_inflow": -23214800.0,
+      "mid_net_inflow": -9550800.0,
+      "lg_net_inflow": 24396800.0,
+      "max_net_inflow": 8368900.0
+    }
+  },
+  {
+    "stock_code": "603383",
+    "days_type_1": {
+      "main_net_inflow": 15950300.0,
+      "sm_net_inflow": -18242400.0,
+      "mid_net_inflow": 2292000.0,
+      "lg_net_inflow": 15700500.0,
+      "max_net_inflow": 249800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 52118400.0,
+      "sm_net_inflow": -23447600.0,
+      "mid_net_inflow": -28670900.0,
+      "lg_net_inflow": 64024200.0,
+      "max_net_inflow": -11905700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 63626100.0,
+      "sm_net_inflow": -13672000.0,
+      "mid_net_inflow": -49954200.0,
+      "lg_net_inflow": 94433600.0,
+      "max_net_inflow": -30807400.0
+    }
+  },
+  {
+    "stock_code": "603861",
+    "days_type_1": {
+      "main_net_inflow": 27917200.0,
+      "sm_net_inflow": -23762200.0,
+      "mid_net_inflow": -4155000.0,
+      "lg_net_inflow": 16343700.0,
+      "max_net_inflow": 11573500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 58415200.0,
+      "sm_net_inflow": -78422200.0,
+      "mid_net_inflow": 20006900.0,
+      "lg_net_inflow": 41834400.0,
+      "max_net_inflow": 16580800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 60145400.0,
+      "sm_net_inflow": -105541600.0,
+      "mid_net_inflow": 45396200.0,
+      "lg_net_inflow": 44003700.0,
+      "max_net_inflow": 16141761.0
+    }
+  },
+  {
+    "stock_code": "605228",
+    "days_type_1": {
+      "main_net_inflow": 64316300.0,
+      "sm_net_inflow": -38476400.0,
+      "mid_net_inflow": -25839900.0,
+      "lg_net_inflow": -729000.0,
+      "max_net_inflow": 65045400.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 128183200.0,
+      "sm_net_inflow": -59917700.0,
+      "mid_net_inflow": -68265700.0,
+      "lg_net_inflow": -8119300.0,
+      "max_net_inflow": 136302700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 108320800.0,
+      "sm_net_inflow": -42008400.0,
+      "mid_net_inflow": -66312400.0,
+      "lg_net_inflow": -25888900.0,
+      "max_net_inflow": 134209700.0
+    }
+  },
+  {
+    "stock_code": "301316",
+    "days_type_1": {
+      "main_net_inflow": 140000000.0,
+      "sm_net_inflow": -85870700.0,
+      "mid_net_inflow": -54490700.0,
+      "lg_net_inflow": 32832500.0,
+      "max_net_inflow": 108000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -37521600.0,
+      "sm_net_inflow": 45506500.0,
+      "mid_net_inflow": -8204300.0,
+      "lg_net_inflow": -55950200.0,
+      "max_net_inflow": 19119300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 136527100.0,
+      "sm_net_inflow": -146202700.0,
+      "mid_net_inflow": 10192500.0,
+      "lg_net_inflow": 54995000.0,
+      "max_net_inflow": 81943400.0
+    }
+  },
+  {
+    "stock_code": "000728",
+    "days_type_1": {
+      "main_net_inflow": 21349900.0,
+      "sm_net_inflow": -8413600.0,
+      "mid_net_inflow": -12936300.0,
+      "lg_net_inflow": 880800.0,
+      "max_net_inflow": 20469100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -18743100.0,
+      "sm_net_inflow": -2502800.0,
+      "mid_net_inflow": 21245800.0,
+      "lg_net_inflow": 4253100.0,
+      "max_net_inflow": -22996300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10943500.0,
+      "sm_net_inflow": -13734800.0,
+      "mid_net_inflow": 2791600.0,
+      "lg_net_inflow": 53054500.0,
+      "max_net_inflow": -42111400.0
+    }
+  },
+  {
+    "stock_code": "002459",
+    "days_type_1": {
+      "main_net_inflow": -39039600.0,
+      "sm_net_inflow": 8810500.0,
+      "mid_net_inflow": 30229100.0,
+      "lg_net_inflow": 24783500.0,
+      "max_net_inflow": -63823100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -64862500.0,
+      "sm_net_inflow": 48521300.0,
+      "mid_net_inflow": 16341300.0,
+      "lg_net_inflow": 40068400.0,
+      "max_net_inflow": -104930900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 46259500.0,
+      "sm_net_inflow": 40018200.0,
+      "mid_net_inflow": -86754600.0,
+      "lg_net_inflow": 73113800.0,
+      "max_net_inflow": -26124700.0
+    }
+  },
+  {
+    "stock_code": "002570",
+    "days_type_1": {
+      "main_net_inflow": -16896000.0,
+      "sm_net_inflow": 20988300.0,
+      "mid_net_inflow": -4092200.0,
+      "lg_net_inflow": -16183300.0,
+      "max_net_inflow": -712700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -23964100.0,
+      "sm_net_inflow": -12799400.0,
+      "mid_net_inflow": 36763600.0,
+      "lg_net_inflow": -11677300.0,
+      "max_net_inflow": -12286700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 14330200.0,
+      "sm_net_inflow": -65525700.0,
+      "mid_net_inflow": 51195500.0,
+      "lg_net_inflow": 30531700.0,
+      "max_net_inflow": -16201600.0
+    }
+  },
+  {
+    "stock_code": "300378",
+    "days_type_1": {
+      "main_net_inflow": 466000000.0,
+      "sm_net_inflow": -252000000.0,
+      "mid_net_inflow": -214000000.0,
+      "lg_net_inflow": 95266800.0,
+      "max_net_inflow": 371000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 434404500.0,
+      "sm_net_inflow": -123863900.0,
+      "mid_net_inflow": -310250800.0,
+      "lg_net_inflow": 30575900.0,
+      "max_net_inflow": 404095300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 212057600.0,
+      "sm_net_inflow": 120065700.0,
+      "mid_net_inflow": -332356800.0,
+      "lg_net_inflow": -48520200.0,
+      "max_net_inflow": 261264800.0
+    }
+  },
+  {
+    "stock_code": "300901",
+    "days_type_1": {
+      "main_net_inflow": 2241800.0,
+      "sm_net_inflow": -853700.0,
+      "mid_net_inflow": -1388100.0,
+      "lg_net_inflow": 1740000.0,
+      "max_net_inflow": 501800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 26351000.0,
+      "sm_net_inflow": -22365600.0,
+      "mid_net_inflow": -3985300.0,
+      "lg_net_inflow": 18674500.0,
+      "max_net_inflow": 7676500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 44128200.0,
+      "sm_net_inflow": -47173700.0,
+      "mid_net_inflow": 3045500.0,
+      "lg_net_inflow": 40724800.0,
+      "max_net_inflow": 3403400.0
+    }
+  },
+  {
+    "stock_code": "301191",
+    "days_type_1": {
+      "main_net_inflow": 4666800.0,
+      "sm_net_inflow": -9103100.0,
+      "mid_net_inflow": 4436300.0,
+      "lg_net_inflow": 7020500.0,
+      "max_net_inflow": -2353700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -16564600.0,
+      "sm_net_inflow": 9151500.0,
+      "mid_net_inflow": 7412900.0,
+      "lg_net_inflow": -12235300.0,
+      "max_net_inflow": -4329300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 40906000.0,
+      "sm_net_inflow": -51465800.0,
+      "mid_net_inflow": 10559700.0,
+      "lg_net_inflow": 20585300.0,
+      "max_net_inflow": 20320700.0
+    }
+  },
+  {
+    "stock_code": "600918",
+    "days_type_1": {
+      "main_net_inflow": 19629000.0,
+      "sm_net_inflow": -11121200.0,
+      "mid_net_inflow": -8507700.0,
+      "lg_net_inflow": 19242000.0,
+      "max_net_inflow": 387000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 18224900.0,
+      "sm_net_inflow": -13674300.0,
+      "mid_net_inflow": -4550700.0,
+      "lg_net_inflow": 34804500.0,
+      "max_net_inflow": -16579500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 24712900.0,
+      "sm_net_inflow": 5635000.0,
+      "mid_net_inflow": -30348300.0,
+      "lg_net_inflow": 21599400.0,
+      "max_net_inflow": 3113600.0
+    }
+  },
+  {
+    "stock_code": "601136",
+    "days_type_1": {
+      "main_net_inflow": 604000000.0,
+      "sm_net_inflow": -219000000.0,
+      "mid_net_inflow": -385000000.0,
+      "lg_net_inflow": -154000000.0,
+      "max_net_inflow": 759000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 534548100.0,
+      "sm_net_inflow": -124372800.0,
+      "mid_net_inflow": -410175300.0,
+      "lg_net_inflow": -169703900.0,
+      "max_net_inflow": 705252000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 600587700.0,
+      "sm_net_inflow": -184011300.0,
+      "mid_net_inflow": -416576500.0,
+      "lg_net_inflow": -106046600.0,
+      "max_net_inflow": 707634300.0
+    }
+  },
+  {
+    "stock_code": "603389",
+    "days_type_1": {
+      "main_net_inflow": 439900.0,
+      "sm_net_inflow": 1435700.0,
+      "mid_net_inflow": -1875700.0,
+      "lg_net_inflow": 113400.0,
+      "max_net_inflow": 326500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -12107200.0,
+      "sm_net_inflow": 29387200.0,
+      "mid_net_inflow": -17280100.0,
+      "lg_net_inflow": 681800.0,
+      "max_net_inflow": -12789000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 15187700.0,
+      "sm_net_inflow": 5579200.0,
+      "mid_net_inflow": -20767100.0,
+      "lg_net_inflow": 856200.0,
+      "max_net_inflow": 14331591.0
+    }
+  },
+  {
+    "stock_code": "603595",
+    "days_type_1": {
+      "main_net_inflow": 98053200.0,
+      "sm_net_inflow": -71131100.0,
+      "mid_net_inflow": -26922000.0,
+      "lg_net_inflow": 19471800.0,
+      "max_net_inflow": 78581400.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 248621100.0,
+      "sm_net_inflow": -191271200.0,
+      "mid_net_inflow": -56931900.0,
+      "lg_net_inflow": 20789800.0,
+      "max_net_inflow": 227510700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 232768100.0,
+      "sm_net_inflow": -166514100.0,
+      "mid_net_inflow": -65835900.0,
+      "lg_net_inflow": 1359100.0,
+      "max_net_inflow": 231088300.0
+    }
+  },
+  {
+    "stock_code": "603700",
+    "days_type_1": {
+      "main_net_inflow": -1445100.0,
+      "sm_net_inflow": 8331800.0,
+      "mid_net_inflow": -6886700.0,
+      "lg_net_inflow": -10901400.0,
+      "max_net_inflow": 9456300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 20387700.0,
+      "sm_net_inflow": -541800.0,
+      "mid_net_inflow": -19845900.0,
+      "lg_net_inflow": -57770800.0,
+      "max_net_inflow": 78158600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 41992900.0,
+      "sm_net_inflow": -15516200.0,
+      "mid_net_inflow": -26476800.0,
+      "lg_net_inflow": -52712900.0,
+      "max_net_inflow": 94705900.0
+    }
+  },
+  {
+    "stock_code": "688615",
+    "days_type_1": {
+      "main_net_inflow": 55275200.0,
+      "sm_net_inflow": -3754200.0,
+      "mid_net_inflow": -51521000.0,
+      "lg_net_inflow": 28662300.0,
+      "max_net_inflow": 26613000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 99312400.0,
+      "sm_net_inflow": -13520700.0,
+      "mid_net_inflow": -85791900.0,
+      "lg_net_inflow": 25165900.0,
+      "max_net_inflow": 74146600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 151038500.0,
+      "sm_net_inflow": -24652500.0,
+      "mid_net_inflow": -126386100.0,
+      "lg_net_inflow": 67523500.0,
+      "max_net_inflow": 83515100.0
+    }
+  },
+  {
+    "stock_code": "300368",
+    "days_type_1": {
+      "main_net_inflow": -1592700.0,
+      "sm_net_inflow": 1912800.0,
+      "mid_net_inflow": -320100.0,
+      "lg_net_inflow": -3231200.0,
+      "max_net_inflow": 1638600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 13850800.0,
+      "sm_net_inflow": -8368300.0,
+      "mid_net_inflow": -5482400.0,
+      "lg_net_inflow": 10740300.0,
+      "max_net_inflow": 3110500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 33509400.0,
+      "sm_net_inflow": -20688300.0,
+      "mid_net_inflow": -12821000.0,
+      "lg_net_inflow": 29648900.0,
+      "max_net_inflow": 3860500.0
+    }
+  },
+  {
+    "stock_code": "002563",
+    "days_type_1": {
+      "main_net_inflow": 1330900.0,
+      "sm_net_inflow": -906300.0,
+      "mid_net_inflow": -424500.0,
+      "lg_net_inflow": 1330900.0,
+      "max_net_inflow": 0.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 42404000.0,
+      "sm_net_inflow": -16042300.0,
+      "mid_net_inflow": -26361300.0,
+      "lg_net_inflow": 46754500.0,
+      "max_net_inflow": -4350600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 66734800.0,
+      "sm_net_inflow": -54113200.0,
+      "mid_net_inflow": -12621300.0,
+      "lg_net_inflow": 62237000.0,
+      "max_net_inflow": 4497700.0
+    }
+  },
+  {
+    "stock_code": "002853",
+    "days_type_1": {
+      "main_net_inflow": -5156000.0,
+      "sm_net_inflow": -1055900.0,
+      "mid_net_inflow": 6212000.0,
+      "lg_net_inflow": 3081500.0,
+      "max_net_inflow": -8237500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 58026600.0,
+      "sm_net_inflow": -47960200.0,
+      "mid_net_inflow": -10066300.0,
+      "lg_net_inflow": 38219900.0,
+      "max_net_inflow": 19806700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 90907800.0,
+      "sm_net_inflow": -70101100.0,
+      "mid_net_inflow": -20806700.0,
+      "lg_net_inflow": 45158100.0,
+      "max_net_inflow": 45749700.0
+    }
+  },
+  {
+    "stock_code": "300066",
+    "days_type_1": {
+      "main_net_inflow": 18604700.0,
+      "sm_net_inflow": -23077100.0,
+      "mid_net_inflow": 4472400.0,
+      "lg_net_inflow": 23544900.0,
+      "max_net_inflow": -4940200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 25057600.0,
+      "sm_net_inflow": -33283800.0,
+      "mid_net_inflow": 8226300.0,
+      "lg_net_inflow": 19975800.0,
+      "max_net_inflow": 5081700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 59473400.0,
+      "sm_net_inflow": -77742500.0,
+      "mid_net_inflow": 18269300.0,
+      "lg_net_inflow": 44518400.0,
+      "max_net_inflow": 14954700.0
+    }
+  },
+  {
+    "stock_code": "600906",
+    "days_type_1": {
+      "main_net_inflow": 11117500.0,
+      "sm_net_inflow": -3696200.0,
+      "mid_net_inflow": -7421300.0,
+      "lg_net_inflow": 9589300.0,
+      "max_net_inflow": 1528200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -2447500.0,
+      "sm_net_inflow": 20263400.0,
+      "mid_net_inflow": -17815800.0,
+      "lg_net_inflow": 1674500.0,
+      "max_net_inflow": -4121900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 35382200.0,
+      "sm_net_inflow": 6313300.0,
+      "mid_net_inflow": -41695500.0,
+      "lg_net_inflow": 22141600.0,
+      "max_net_inflow": 13240700.0
+    }
+  },
+  {
+    "stock_code": "301428",
+    "days_type_1": {
+      "main_net_inflow": 226000000.0,
+      "sm_net_inflow": -82546400.0,
+      "mid_net_inflow": -144000000.0,
+      "lg_net_inflow": -64978400.0,
+      "max_net_inflow": 291000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 200741000.0,
+      "sm_net_inflow": -65226500.0,
+      "mid_net_inflow": -136061000.0,
+      "lg_net_inflow": -83691600.0,
+      "max_net_inflow": 284454300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 99842500.0,
+      "sm_net_inflow": 6111000.0,
+      "mid_net_inflow": -106499800.0,
+      "lg_net_inflow": -155788900.0,
+      "max_net_inflow": 255653000.0
+    }
+  },
+  {
+    "stock_code": "002195",
+    "days_type_1": {
+      "main_net_inflow": -158000000.0,
+      "sm_net_inflow": 160000000.0,
+      "mid_net_inflow": -2884900.0,
+      "lg_net_inflow": -94120300.0,
+      "max_net_inflow": -63467100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 1105319500.0,
+      "sm_net_inflow": -574500600.0,
+      "mid_net_inflow": -531666100.0,
+      "lg_net_inflow": -199430600.0,
+      "max_net_inflow": 1304153500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 777484500.0,
+      "sm_net_inflow": -200180300.0,
+      "mid_net_inflow": -579618600.0,
+      "lg_net_inflow": -342893300.0,
+      "max_net_inflow": 1120415800.0
+    }
+  },
+  {
+    "stock_code": "002194",
+    "days_type_1": {
+      "main_net_inflow": -186000000.0,
+      "sm_net_inflow": 160000000.0,
+      "mid_net_inflow": 26107200.0,
+      "lg_net_inflow": -92633100.0,
+      "max_net_inflow": -93516700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 762800.0,
+      "sm_net_inflow": 108281200.0,
+      "mid_net_inflow": -108936900.0,
+      "lg_net_inflow": -170289200.0,
+      "max_net_inflow": 171663300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10649100.0,
+      "sm_net_inflow": -1250400.0,
+      "mid_net_inflow": -9291500.0,
+      "lg_net_inflow": -130910300.0,
+      "max_net_inflow": 142170600.0
+    }
+  },
+  {
+    "stock_code": "600859",
+    "days_type_1": {
+      "main_net_inflow": 19169000.0,
+      "sm_net_inflow": -19757200.0,
+      "mid_net_inflow": 588200.0,
+      "lg_net_inflow": 27388600.0,
+      "max_net_inflow": -8219600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 139070300.0,
+      "sm_net_inflow": -87081700.0,
+      "mid_net_inflow": -52214500.0,
+      "lg_net_inflow": 62830600.0,
+      "max_net_inflow": 76465600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 158650700.0,
+      "sm_net_inflow": -87310200.0,
+      "mid_net_inflow": -71566400.0,
+      "lg_net_inflow": 75146500.0,
+      "max_net_inflow": 83730200.0
+    }
+  },
+  {
+    "stock_code": "688478",
+    "days_type_1": {
+      "main_net_inflow": 13174400.0,
+      "sm_net_inflow": -3756300.0,
+      "mid_net_inflow": -9418000.0,
+      "lg_net_inflow": 12559200.0,
+      "max_net_inflow": 615200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 28497800.0,
+      "sm_net_inflow": -26719300.0,
+      "mid_net_inflow": -1778400.0,
+      "lg_net_inflow": 27243100.0,
+      "max_net_inflow": 1254600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 55092400.0,
+      "sm_net_inflow": -36883900.0,
+      "mid_net_inflow": -18208200.0,
+      "lg_net_inflow": 48310900.0,
+      "max_net_inflow": 6781300.0
+    }
+  },
+  {
+    "stock_code": "600705",
+    "days_type_1": {
+      "main_net_inflow": 411000000.0,
+      "sm_net_inflow": -245000000.0,
+      "mid_net_inflow": -165000000.0,
+      "lg_net_inflow": -33755100.0,
+      "max_net_inflow": 445000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 422497600.0,
+      "sm_net_inflow": -270476300.0,
+      "mid_net_inflow": -151021400.0,
+      "lg_net_inflow": -55919500.0,
+      "max_net_inflow": 478662100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 387157500.0,
+      "sm_net_inflow": -202950700.0,
+      "mid_net_inflow": -183206900.0,
+      "lg_net_inflow": -66470700.0,
+      "max_net_inflow": 453873100.0
+    }
+  },
+  {
+    "stock_code": "603602",
+    "days_type_1": {
+      "main_net_inflow": 7232000.0,
+      "sm_net_inflow": 40434100.0,
+      "mid_net_inflow": -47666000.0,
+      "lg_net_inflow": 24428900.0,
+      "max_net_inflow": -17197000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 119020200.0,
+      "sm_net_inflow": -74707000.0,
+      "mid_net_inflow": -44313100.0,
+      "lg_net_inflow": 20722300.0,
+      "max_net_inflow": 98297700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 105891100.0,
+      "sm_net_inflow": -66679700.0,
+      "mid_net_inflow": -39211300.0,
+      "lg_net_inflow": 11022200.0,
+      "max_net_inflow": 94868900.0
+    }
+  },
+  {
+    "stock_code": "000409",
+    "days_type_1": {
+      "main_net_inflow": 78036800.0,
+      "sm_net_inflow": -40373500.0,
+      "mid_net_inflow": -37663300.0,
+      "lg_net_inflow": -37089800.0,
+      "max_net_inflow": 115000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 221848500.0,
+      "sm_net_inflow": 49412900.0,
+      "mid_net_inflow": -271794800.0,
+      "lg_net_inflow": -382468000.0,
+      "max_net_inflow": 604238700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 175740000.0,
+      "sm_net_inflow": 68549900.0,
+      "mid_net_inflow": -244823300.0,
+      "lg_net_inflow": -424566200.0,
+      "max_net_inflow": 600228400.0
+    }
+  },
+  {
+    "stock_code": "002203",
+    "days_type_1": {
+      "main_net_inflow": 15357800.0,
+      "sm_net_inflow": -5217800.0,
+      "mid_net_inflow": -10139900.0,
+      "lg_net_inflow": 13392400.0,
+      "max_net_inflow": 1965300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 38042000.0,
+      "sm_net_inflow": -21502600.0,
+      "mid_net_inflow": -16539400.0,
+      "lg_net_inflow": 31808700.0,
+      "max_net_inflow": 6233200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 74031700.0,
+      "sm_net_inflow": -55330800.0,
+      "mid_net_inflow": -18700900.0,
+      "lg_net_inflow": 68241800.0,
+      "max_net_inflow": 5789900.0
+    }
+  },
+  {
+    "stock_code": "002244",
+    "days_type_1": {
+      "main_net_inflow": -14255800.0,
+      "sm_net_inflow": 19015800.0,
+      "mid_net_inflow": -4760000.0,
+      "lg_net_inflow": -12616300.0,
+      "max_net_inflow": -1639600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -10877700.0,
+      "sm_net_inflow": 10728500.0,
+      "mid_net_inflow": 149300.0,
+      "lg_net_inflow": -7761700.0,
+      "max_net_inflow": -3116000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 22983100.0,
+      "sm_net_inflow": 28161100.0,
+      "mid_net_inflow": -51144000.0,
+      "lg_net_inflow": 35486000.0,
+      "max_net_inflow": -12502900.0
+    }
+  },
+  {
+    "stock_code": "002760",
+    "days_type_1": {
+      "main_net_inflow": 22292100.0,
+      "sm_net_inflow": -12679000.0,
+      "mid_net_inflow": -9613100.0,
+      "lg_net_inflow": 7885100.0,
+      "max_net_inflow": 14407000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -15269600.0,
+      "sm_net_inflow": 13964400.0,
+      "mid_net_inflow": 1305200.0,
+      "lg_net_inflow": -21185600.0,
+      "max_net_inflow": 5916000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 33124800.0,
+      "sm_net_inflow": -18828400.0,
+      "mid_net_inflow": -14296400.0,
+      "lg_net_inflow": -220600.0,
+      "max_net_inflow": 33345400.0
+    }
+  },
+  {
+    "stock_code": "301032",
+    "days_type_1": {
+      "main_net_inflow": 185000000.0,
+      "sm_net_inflow": -67138800.0,
+      "mid_net_inflow": -118000000.0,
+      "lg_net_inflow": -49713100.0,
+      "max_net_inflow": 235000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 183430100.0,
+      "sm_net_inflow": -79689100.0,
+      "mid_net_inflow": -103879800.0,
+      "lg_net_inflow": -55283400.0,
+      "max_net_inflow": 239000400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 194370200.0,
+      "sm_net_inflow": -123869400.0,
+      "mid_net_inflow": -70639600.0,
+      "lg_net_inflow": -47611700.0,
+      "max_net_inflow": 242268700.0
+    }
+  },
+  {
+    "stock_code": "301358",
+    "days_type_1": {
+      "main_net_inflow": 11128100.0,
+      "sm_net_inflow": -12869700.0,
+      "mid_net_inflow": 1741600.0,
+      "lg_net_inflow": 9652300.0,
+      "max_net_inflow": 1475800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 13432000.0,
+      "sm_net_inflow": -57063300.0,
+      "mid_net_inflow": 43631400.0,
+      "lg_net_inflow": -5989500.0,
+      "max_net_inflow": 19421500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 76730300.0,
+      "sm_net_inflow": -144357300.0,
+      "mid_net_inflow": 67627000.0,
+      "lg_net_inflow": 41480800.0,
+      "max_net_inflow": 35249500.0
+    }
+  },
+  {
+    "stock_code": "301382",
+    "days_type_1": {
+      "main_net_inflow": 12344100.0,
+      "sm_net_inflow": -32018400.0,
+      "mid_net_inflow": 19674300.0,
+      "lg_net_inflow": -14852900.0,
+      "max_net_inflow": 27196900.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 68872400.0,
+      "sm_net_inflow": 19084100.0,
+      "mid_net_inflow": -87199800.0,
+      "lg_net_inflow": -65764100.0,
+      "max_net_inflow": 134425700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 136595500.0,
+      "sm_net_inflow": -76650200.0,
+      "mid_net_inflow": -58958600.0,
+      "lg_net_inflow": -165192900.0,
+      "max_net_inflow": 301970700.0
+    }
+  },
+  {
+    "stock_code": "301507",
+    "days_type_1": {
+      "main_net_inflow": -5772200.0,
+      "sm_net_inflow": 9510100.0,
+      "mid_net_inflow": -3737900.0,
+      "lg_net_inflow": -5947000.0,
+      "max_net_inflow": 174800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -8885200.0,
+      "sm_net_inflow": -2711100.0,
+      "mid_net_inflow": 11596200.0,
+      "lg_net_inflow": -15270200.0,
+      "max_net_inflow": 6384900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 14936500.0,
+      "sm_net_inflow": -19041600.0,
+      "mid_net_inflow": 4105100.0,
+      "lg_net_inflow": 3407500.0,
+      "max_net_inflow": 11528800.0
+    }
+  },
+  {
+    "stock_code": "600841",
+    "days_type_1": {
+      "main_net_inflow": 102000000.0,
+      "sm_net_inflow": -66497900.0,
+      "mid_net_inflow": -35746300.0,
+      "lg_net_inflow": 3099500.0,
+      "max_net_inflow": 99144800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 136229300.0,
+      "sm_net_inflow": -51480500.0,
+      "mid_net_inflow": -84993000.0,
+      "lg_net_inflow": -30406900.0,
+      "max_net_inflow": 166880700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 318526000.0,
+      "sm_net_inflow": -170108900.0,
+      "mid_net_inflow": -148661200.0,
+      "lg_net_inflow": -15087000.0,
+      "max_net_inflow": 333857600.0
+    }
+  },
+  {
+    "stock_code": "600882",
+    "days_type_1": {
+      "main_net_inflow": -26133600.0,
+      "sm_net_inflow": 36043400.0,
+      "mid_net_inflow": -9909800.0,
+      "lg_net_inflow": -20691200.0,
+      "max_net_inflow": -5442500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -16093400.0,
+      "sm_net_inflow": 75544500.0,
+      "mid_net_inflow": -59451100.0,
+      "lg_net_inflow": -5102300.0,
+      "max_net_inflow": -10991300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 10934400.0,
+      "sm_net_inflow": 30209300.0,
+      "mid_net_inflow": -41143600.0,
+      "lg_net_inflow": 4845700.0,
+      "max_net_inflow": 6088500.0
+    }
+  },
+  {
+    "stock_code": "601128",
+    "days_type_1": {
+      "main_net_inflow": -22678700.0,
+      "sm_net_inflow": 34678000.0,
+      "mid_net_inflow": -11999400.0,
+      "lg_net_inflow": -22762400.0,
+      "max_net_inflow": 83700.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 73773500.0,
+      "sm_net_inflow": -98398600.0,
+      "mid_net_inflow": 24625000.0,
+      "lg_net_inflow": 35887500.0,
+      "max_net_inflow": 37885900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 202663000.0,
+      "sm_net_inflow": -330664500.0,
+      "mid_net_inflow": 128001400.0,
+      "lg_net_inflow": 156800000.0,
+      "max_net_inflow": 45862900.0
+    }
+  },
+  {
+    "stock_code": "601375",
+    "days_type_1": {
+      "main_net_inflow": 11735200.0,
+      "sm_net_inflow": -7536000.0,
+      "mid_net_inflow": -4199200.0,
+      "lg_net_inflow": 4190400.0,
+      "max_net_inflow": 7544800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -7054100.0,
+      "sm_net_inflow": -9037200.0,
+      "mid_net_inflow": 16091500.0,
+      "lg_net_inflow": -5343300.0,
+      "max_net_inflow": -1710900.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 11315000.0,
+      "sm_net_inflow": 102300.0,
+      "mid_net_inflow": -11417000.0,
+      "lg_net_inflow": -40766800.0,
+      "max_net_inflow": 52081700.0
+    }
+  },
+  {
+    "stock_code": "603605",
+    "days_type_1": {
+      "main_net_inflow": -11104800.0,
+      "sm_net_inflow": 12894000.0,
+      "mid_net_inflow": -1789200.0,
+      "lg_net_inflow": -13311100.0,
+      "max_net_inflow": 2206300.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 51320600.0,
+      "sm_net_inflow": -89188100.0,
+      "mid_net_inflow": 37867400.0,
+      "lg_net_inflow": 42876200.0,
+      "max_net_inflow": 8444500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 91787600.0,
+      "sm_net_inflow": -189015500.0,
+      "mid_net_inflow": 97227800.0,
+      "lg_net_inflow": 117397200.0,
+      "max_net_inflow": -25609700.0
+    }
+  },
+  {
+    "stock_code": "603939",
+    "days_type_1": {
+      "main_net_inflow": 15342400.0,
+      "sm_net_inflow": 1597200.0,
+      "mid_net_inflow": -16939600.0,
+      "lg_net_inflow": 14695300.0,
+      "max_net_inflow": 647200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 14822400.0,
+      "sm_net_inflow": -19244900.0,
+      "mid_net_inflow": 4422500.0,
+      "lg_net_inflow": 20623000.0,
+      "max_net_inflow": -5800500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 19415800.0,
+      "sm_net_inflow": -7009900.0,
+      "mid_net_inflow": -12405900.0,
+      "lg_net_inflow": 33527900.0,
+      "max_net_inflow": -14112100.0
+    }
+  },
+  {
+    "stock_code": "688369",
+    "days_type_1": {
+      "main_net_inflow": 43518900.0,
+      "sm_net_inflow": -22993200.0,
+      "mid_net_inflow": -20525700.0,
+      "lg_net_inflow": -7886700.0,
+      "max_net_inflow": 51405500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 78210000.0,
+      "sm_net_inflow": -47580600.0,
+      "mid_net_inflow": -30629500.0,
+      "lg_net_inflow": 16904100.0,
+      "max_net_inflow": 61305800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 19084500.0,
+      "sm_net_inflow": -7499600.0,
+      "mid_net_inflow": -11585000.0,
+      "lg_net_inflow": -3561700.0,
+      "max_net_inflow": 22646000.0
+    }
+  },
+  {
+    "stock_code": "003010",
+    "days_type_1": {
+      "main_net_inflow": 3619600.0,
+      "sm_net_inflow": -15639900.0,
+      "mid_net_inflow": 12020300.0,
+      "lg_net_inflow": -1037800.0,
+      "max_net_inflow": 4657500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 48856100.0,
+      "sm_net_inflow": -79231000.0,
+      "mid_net_inflow": 30375100.0,
+      "lg_net_inflow": 14834800.0,
+      "max_net_inflow": 34021300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 51032200.0,
+      "sm_net_inflow": -101729900.0,
+      "mid_net_inflow": 50697900.0,
+      "lg_net_inflow": 29178400.0,
+      "max_net_inflow": 21853700.0
+    }
+  },
+  {
+    "stock_code": "300379",
+    "days_type_1": {
+      "main_net_inflow": 305000000.0,
+      "sm_net_inflow": -168000000.0,
+      "mid_net_inflow": -137000000.0,
+      "lg_net_inflow": 42360400.0,
+      "max_net_inflow": 262000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 210854300.0,
+      "sm_net_inflow": -73026800.0,
+      "mid_net_inflow": -137827300.0,
+      "lg_net_inflow": -3476900.0,
+      "max_net_inflow": 213691500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 302065500.0,
+      "sm_net_inflow": -149404000.0,
+      "mid_net_inflow": -153019100.0,
+      "lg_net_inflow": 14536300.0,
+      "max_net_inflow": 287247300.0
+    }
+  },
+  {
+    "stock_code": "000536",
+    "days_type_1": {
+      "main_net_inflow": 664000000.0,
+      "sm_net_inflow": -381000000.0,
+      "mid_net_inflow": -283000000.0,
+      "lg_net_inflow": -73774800.0,
+      "max_net_inflow": 738000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 577420500.0,
+      "sm_net_inflow": -266663800.0,
+      "mid_net_inflow": -310756700.0,
+      "lg_net_inflow": -135737300.0,
+      "max_net_inflow": 713383100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 309975500.0,
+      "sm_net_inflow": 207855800.0,
+      "mid_net_inflow": -516951300.0,
+      "lg_net_inflow": -425213700.0,
+      "max_net_inflow": 734718500.0
+    }
+  },
+  {
+    "stock_code": "002515",
+    "days_type_1": {
+      "main_net_inflow": -13400100.0,
+      "sm_net_inflow": 22052100.0,
+      "mid_net_inflow": -8652000.0,
+      "lg_net_inflow": -26680600.0,
+      "max_net_inflow": 13280500.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 59019700.0,
+      "sm_net_inflow": -32009600.0,
+      "mid_net_inflow": -27010000.0,
+      "lg_net_inflow": 37096500.0,
+      "max_net_inflow": 21923000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 127573900.0,
+      "sm_net_inflow": -68542500.0,
+      "mid_net_inflow": -59031200.0,
+      "lg_net_inflow": 60874000.0,
+      "max_net_inflow": 66699700.0
+    }
+  },
+  {
+    "stock_code": "300449",
+    "days_type_1": {
+      "main_net_inflow": -2000300.0,
+      "sm_net_inflow": 2990200.0,
+      "mid_net_inflow": -989900.0,
+      "lg_net_inflow": -492700.0,
+      "max_net_inflow": -1507600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 39700000.0,
+      "sm_net_inflow": -24520700.0,
+      "mid_net_inflow": -15179400.0,
+      "lg_net_inflow": 17794400.0,
+      "max_net_inflow": 21905800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 34052800.0,
+      "sm_net_inflow": -33460600.0,
+      "mid_net_inflow": -592200.0,
+      "lg_net_inflow": 29405500.0,
+      "max_net_inflow": 4647600.0
+    }
+  },
+  {
+    "stock_code": "002093",
+    "days_type_1": {
+      "main_net_inflow": 98848800.0,
+      "sm_net_inflow": -50351600.0,
+      "mid_net_inflow": -48497200.0,
+      "lg_net_inflow": -7393200.0,
+      "max_net_inflow": 106000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 84457500.0,
+      "sm_net_inflow": -40502500.0,
+      "mid_net_inflow": -43955000.0,
+      "lg_net_inflow": -9026300.0,
+      "max_net_inflow": 93241600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 27067400.0,
+      "sm_net_inflow": 30055000.0,
+      "mid_net_inflow": -57122400.0,
+      "lg_net_inflow": -33762200.0,
+      "max_net_inflow": 60587600.0
+    }
+  },
+  {
+    "stock_code": "600728",
+    "days_type_1": {
+      "main_net_inflow": 200000000.0,
+      "sm_net_inflow": -130000000.0,
+      "mid_net_inflow": -70621000.0,
+      "lg_net_inflow": 29742200.0,
+      "max_net_inflow": 171000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 151525500.0,
+      "sm_net_inflow": -54726000.0,
+      "mid_net_inflow": -97420600.0,
+      "lg_net_inflow": 9258300.0,
+      "max_net_inflow": 143009500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 103722900.0,
+      "sm_net_inflow": 66743700.0,
+      "mid_net_inflow": -171087600.0,
+      "lg_net_inflow": -36869400.0,
+      "max_net_inflow": 141334600.0
+    }
+  },
+  {
+    "stock_code": "600048",
+    "days_type_1": {
+      "main_net_inflow": -6398800.0,
+      "sm_net_inflow": 57380800.0,
+      "mid_net_inflow": -50982000.0,
+      "lg_net_inflow": 55826200.0,
+      "max_net_inflow": -62225000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -107743700.0,
+      "sm_net_inflow": 46016300.0,
+      "mid_net_inflow": 61727500.0,
+      "lg_net_inflow": 111655500.0,
+      "max_net_inflow": -219399200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 251833800.0,
+      "sm_net_inflow": 7561100.0,
+      "mid_net_inflow": -259413400.0,
+      "lg_net_inflow": -30129500.0,
+      "max_net_inflow": 282358500.0
+    }
+  },
+  {
+    "stock_code": "600887",
+    "days_type_1": {
+      "main_net_inflow": 10833600.0,
+      "sm_net_inflow": -6928900.0,
+      "mid_net_inflow": -3904700.0,
+      "lg_net_inflow": -2713300.0,
+      "max_net_inflow": 13546800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 24358000.0,
+      "sm_net_inflow": 60704900.0,
+      "mid_net_inflow": -86119200.0,
+      "lg_net_inflow": 227631500.0,
+      "max_net_inflow": -201987800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 460394000.0,
+      "sm_net_inflow": -306706900.0,
+      "mid_net_inflow": -154336800.0,
+      "lg_net_inflow": 441430300.0,
+      "max_net_inflow": 19047800.0
+    }
+  },
+  {
+    "stock_code": "002279",
+    "days_type_1": {
+      "main_net_inflow": 39332800.0,
+      "sm_net_inflow": -45486800.0,
+      "mid_net_inflow": 6153900.0,
+      "lg_net_inflow": -18292900.0,
+      "max_net_inflow": 57625800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 92913500.0,
+      "sm_net_inflow": -37612200.0,
+      "mid_net_inflow": -54936100.0,
+      "lg_net_inflow": -124198400.0,
+      "max_net_inflow": 216153700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 65590100.0,
+      "sm_net_inflow": 16641700.0,
+      "mid_net_inflow": -81866600.0,
+      "lg_net_inflow": -133141000.0,
+      "max_net_inflow": 197773000.0
+    }
+  },
+  {
+    "stock_code": "002401",
+    "days_type_1": {
+      "main_net_inflow": -46169200.0,
+      "sm_net_inflow": 17562500.0,
+      "mid_net_inflow": 28606600.0,
+      "lg_net_inflow": -32473000.0,
+      "max_net_inflow": -13696200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -48796500.0,
+      "sm_net_inflow": 19231700.0,
+      "mid_net_inflow": 29564900.0,
+      "lg_net_inflow": -16014200.0,
+      "max_net_inflow": -32782300.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 23869500.0,
+      "sm_net_inflow": 28273000.0,
+      "mid_net_inflow": -51416500.0,
+      "lg_net_inflow": -21641600.0,
+      "max_net_inflow": 45541100.0
+    }
+  },
+  {
+    "stock_code": "002335",
+    "days_type_1": {
+      "main_net_inflow": 497000000.0,
+      "sm_net_inflow": -295000000.0,
+      "mid_net_inflow": -202000000.0,
+      "lg_net_inflow": -8462500.0,
+      "max_net_inflow": 506000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 400492300.0,
+      "sm_net_inflow": -16634100.0,
+      "mid_net_inflow": -383071000.0,
+      "lg_net_inflow": -223860000.0,
+      "max_net_inflow": 625267000.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 761658200.0,
+      "sm_net_inflow": -56332300.0,
+      "mid_net_inflow": -704159100.0,
+      "lg_net_inflow": -312038200.0,
+      "max_net_inflow": 1074635000.0
+    }
+  },
+  {
+    "stock_code": "301396",
+    "days_type_1": {
+      "main_net_inflow": -4232500.0,
+      "sm_net_inflow": -18495100.0,
+      "mid_net_inflow": 22727600.0,
+      "lg_net_inflow": -9605100.0,
+      "max_net_inflow": 5372600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 360624900.0,
+      "sm_net_inflow": -18172100.0,
+      "mid_net_inflow": -343248300.0,
+      "lg_net_inflow": -102665900.0,
+      "max_net_inflow": 463870800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 257324700.0,
+      "sm_net_inflow": 62585300.0,
+      "mid_net_inflow": -320705800.0,
+      "lg_net_inflow": -139432000.0,
+      "max_net_inflow": 397336900.0
+    }
+  },
+  {
+    "stock_code": "000980",
+    "days_type_1": {
+      "main_net_inflow": -79951900.0,
+      "sm_net_inflow": 65875300.0,
+      "mid_net_inflow": 14076600.0,
+      "lg_net_inflow": -29925100.0,
+      "max_net_inflow": -50026800.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 68638600.0,
+      "sm_net_inflow": 18060700.0,
+      "mid_net_inflow": -85754600.0,
+      "lg_net_inflow": -3991200.0,
+      "max_net_inflow": 71226400.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 503090700.0,
+      "sm_net_inflow": -166670500.0,
+      "mid_net_inflow": -336345500.0,
+      "lg_net_inflow": 39465400.0,
+      "max_net_inflow": 462911600.0
+    }
+  },
+  {
+    "stock_code": "002683",
+    "days_type_1": {
+      "main_net_inflow": -40598200.0,
+      "sm_net_inflow": 42230200.0,
+      "mid_net_inflow": -1632000.0,
+      "lg_net_inflow": -30336600.0,
+      "max_net_inflow": -10261600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 53449800.0,
+      "sm_net_inflow": 3448300.0,
+      "mid_net_inflow": -56898000.0,
+      "lg_net_inflow": 34155500.0,
+      "max_net_inflow": 19294100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 73683800.0,
+      "sm_net_inflow": 16607700.0,
+      "mid_net_inflow": -90291500.0,
+      "lg_net_inflow": 26466500.0,
+      "max_net_inflow": 47217100.0
+    }
+  },
+  {
+    "stock_code": "002865",
+    "days_type_1": {
+      "main_net_inflow": -23307500.0,
+      "sm_net_inflow": 4469200.0,
+      "mid_net_inflow": 18838400.0,
+      "lg_net_inflow": 16899900.0,
+      "max_net_inflow": -40207400.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -44574200.0,
+      "sm_net_inflow": 99274300.0,
+      "mid_net_inflow": -54700000.0,
+      "lg_net_inflow": 29711000.0,
+      "max_net_inflow": -74285200.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 40134600.0,
+      "sm_net_inflow": 80264200.0,
+      "mid_net_inflow": -120398700.0,
+      "lg_net_inflow": -19498700.0,
+      "max_net_inflow": 59633400.0
+    }
+  },
+  {
+    "stock_code": "300492",
+    "days_type_1": {
+      "main_net_inflow": 28905900.0,
+      "sm_net_inflow": -22247500.0,
+      "mid_net_inflow": -6658400.0,
+      "lg_net_inflow": 19233800.0,
+      "max_net_inflow": 9672100.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 35120300.0,
+      "sm_net_inflow": -41756200.0,
+      "mid_net_inflow": 6636100.0,
+      "lg_net_inflow": 24140500.0,
+      "max_net_inflow": 10979700.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 12248200.0,
+      "sm_net_inflow": -29479200.0,
+      "mid_net_inflow": 17231300.0,
+      "lg_net_inflow": 20002200.0,
+      "max_net_inflow": -7754100.0
+    }
+  },
+  {
+    "stock_code": "300591",
+    "days_type_1": {
+      "main_net_inflow": -8070700.0,
+      "sm_net_inflow": 5154200.0,
+      "mid_net_inflow": 2916500.0,
+      "lg_net_inflow": 1233900.0,
+      "max_net_inflow": -9304600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 51819600.0,
+      "sm_net_inflow": -73987100.0,
+      "mid_net_inflow": 22167600.0,
+      "lg_net_inflow": 20928400.0,
+      "max_net_inflow": 30891100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 43879300.0,
+      "sm_net_inflow": -70651800.0,
+      "mid_net_inflow": 26772500.0,
+      "lg_net_inflow": 11000300.0,
+      "max_net_inflow": 32878700.0
+    }
+  },
+  {
+    "stock_code": "300922",
+    "days_type_1": {
+      "main_net_inflow": -188100.0,
+      "sm_net_inflow": 4006000.0,
+      "mid_net_inflow": -3817900.0,
+      "lg_net_inflow": -1025300.0,
+      "max_net_inflow": 837200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 11701800.0,
+      "sm_net_inflow": -13698500.0,
+      "mid_net_inflow": 1996800.0,
+      "lg_net_inflow": 9109300.0,
+      "max_net_inflow": 2592600.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 14066700.0,
+      "sm_net_inflow": -15730600.0,
+      "mid_net_inflow": 1664100.0,
+      "lg_net_inflow": 8986600.0,
+      "max_net_inflow": 5080100.0
+    }
+  },
+  {
+    "stock_code": "301139",
+    "days_type_1": {
+      "main_net_inflow": -210000000.0,
+      "sm_net_inflow": 120000000.0,
+      "mid_net_inflow": 90661800.0,
+      "lg_net_inflow": -12644000.0,
+      "max_net_inflow": -198000000.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -799700.0,
+      "sm_net_inflow": 108996000.0,
+      "mid_net_inflow": -107845600.0,
+      "lg_net_inflow": -131039700.0,
+      "max_net_inflow": 130227800.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 244232600.0,
+      "sm_net_inflow": -21538000.0,
+      "mid_net_inflow": -222596300.0,
+      "lg_net_inflow": -144240600.0,
+      "max_net_inflow": 389474600.0
+    }
+  },
+  {
+    "stock_code": "600729",
+    "days_type_1": {
+      "main_net_inflow": 11722800.0,
+      "sm_net_inflow": -167100.0,
+      "mid_net_inflow": -11555700.0,
+      "lg_net_inflow": 7325600.0,
+      "max_net_inflow": 4397200.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 11014600.0,
+      "sm_net_inflow": 32618000.0,
+      "mid_net_inflow": -43632600.0,
+      "lg_net_inflow": 7539400.0,
+      "max_net_inflow": 3475100.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 77693500.0,
+      "sm_net_inflow": 4603700.0,
+      "mid_net_inflow": -82297200.0,
+      "lg_net_inflow": 27697200.0,
+      "max_net_inflow": 49996300.0
+    }
+  },
+  {
+    "stock_code": "600741",
+    "days_type_1": {
+      "main_net_inflow": 17974100.0,
+      "sm_net_inflow": -12027200.0,
+      "mid_net_inflow": -5946800.0,
+      "lg_net_inflow": 7491500.0,
+      "max_net_inflow": 10482600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": -14092000.0,
+      "sm_net_inflow": 29562000.0,
+      "mid_net_inflow": -15469800.0,
+      "lg_net_inflow": 13124500.0,
+      "max_net_inflow": -27216500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 15666500.0,
+      "sm_net_inflow": -56819100.0,
+      "mid_net_inflow": 41152800.0,
+      "lg_net_inflow": 35757800.0,
+      "max_net_inflow": -20091200.0
+    }
+  },
+  {
+    "stock_code": "601012",
+    "days_type_1": {
+      "main_net_inflow": 2035000.0,
+      "sm_net_inflow": 16294500.0,
+      "mid_net_inflow": -18329500.0,
+      "lg_net_inflow": -27910600.0,
+      "max_net_inflow": 29945600.0
+    },
+    "days_type_5": {
+      "main_net_inflow": 239035000.0,
+      "sm_net_inflow": -189705500.0,
+      "mid_net_inflow": -47761900.0,
+      "lg_net_inflow": 503419500.0,
+      "max_net_inflow": -264907500.0
+    },
+    "days_type_10": {
+      "main_net_inflow": 704997500.0,
+      "sm_net_inflow": -587363800.0,
+      "mid_net_inflow": -116484000.0,
+      "lg_net_inflow": 905452800.0,
+      "max_net_inflow": -199368700.0
+    }
+  }
+]
