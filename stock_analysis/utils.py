@@ -14,9 +14,12 @@ import time
 import signal
 import pandas as pd
 from datetime import datetime, timedelta
+from pprint import pprint 
 
 gemini_client = genai.Client(api_key="")
 deepseek_client = OpenAI(api_key="", base_url="https://api.deepseek.com")
+
+# deepseek_client = OpenAI(api_key="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", base_url="https://openrouter.ai/api/v1")
  
 model_id = "gemini-2.0-flash"
 
@@ -156,6 +159,8 @@ def analysis_with_deepseek(prompt):
     response = deepseek_client.chat.completions.create(
         model="deepseek-reasoner",
         messages=prompt,
+        # temperature=0.6,
+        # top_p=0.95,
         stream=False
     )
     return extract_json(response.choices[0].message.content)
@@ -538,9 +543,10 @@ def get_selected_stock_capital_flow(stock_codes, filter=None):
 def process_concept(data):
     try:
         prompt = get_analysis_prompt(data, concept_analysis_system)
+
         # print(f"Analyzing {data['index_name']} (code: {data['index_code']})...")
         prediction = analysis_with_deepseek_robust(prompt)
-        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        prediction['timestamp'] = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         return prediction
     except Exception as e:
         print(f"Error processing {data['index_name']}: {str(e)}")
@@ -549,7 +555,7 @@ def process_concept(data):
             "index_name": data.get('index_name', ''),
             "prediction": "",
             "reason": f"处理失败: {str(e)}",
-            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            "timestamp": datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         }
 
 def concept_analysis(max_workers=3):
@@ -627,7 +633,7 @@ def process_stock(data):
         prompt = get_analysis_prompt(data, stock_analysis_system)
         # print(f"Analyzing {data['stock_code']}...")
         prediction = analysis_with_deepseek_robust(prompt)
-        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        prediction['timestamp'] = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         return prediction
     except Exception as e:
         print(f"Error processing {data['stock_code']}: {str(e)}")
@@ -635,7 +641,7 @@ def process_stock(data):
             "stock_code": data.get('stock_code', ''),
             "prediction": "",
             "reason": f"处理失败: {str(e)}",
-            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            "timestamp": datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         }
 
 def process_order(data):
@@ -643,7 +649,7 @@ def process_order(data):
         prompt = get_analysis_prompt(data, order_analysis_system)
         # print(f"Analyzing {data['stock_code']}...")
         prediction = analysis_with_deepseek_robust(prompt)
-        prediction['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        prediction['timestamp'] = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         return prediction
     except Exception as e:
         print(f"Error processing {data['stock_code']}: {str(e)}")
@@ -653,7 +659,7 @@ def process_order(data):
             "reason": f"处理失败: {str(e)}",
             "stop_loss": "",
             "take_profit": "",
-            "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            "timestamp": datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
         }
 
 def stock_analysis(max_workers=3, sorted=True):
