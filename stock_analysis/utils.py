@@ -4,6 +4,7 @@ from openai import OpenAI
 from pydantic import BaseModel
 from tqdm import tqdm
 from prompts import news_cn_tech, news_analysis, concept_analysis_system, stock_analysis_system, order_analysis_system
+from config import GEMINI_API_KEY, DEEPSEEK_API_KEY
 from datetime import datetime, timedelta
 import pytz
 import json
@@ -16,8 +17,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from pprint import pprint 
 
-gemini_client = genai.Client(api_key="AIzaSyB_i-e4wmc-U7dhXUsOUpq_Mmmnm5xGBhM")
-deepseek_client = OpenAI(api_key="sk-98e55e3e66554dd0a4803ef7d712a698", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+deepseek_client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
 # deepseek_client = OpenAI(api_key="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", base_url="https://openrouter.ai/api/v1")
  
@@ -180,108 +181,6 @@ def get_analysis_prompt(data, system_prompt):
           {"role": "user", "content": json.dumps(data, ensure_ascii=False, indent=2)}
         ]
     return prompt
-
-def filter_high_potential_sectors(data):
-    """
-    基于多周期资金流数据的板块筛选函数
-    新增功能：大额资金流三重维度风险分析
-    """
-    qualified_sectors = []
-    
-    for sector in data:
-        print(sector['index_name'])
-        # 获取周期数据；如果缺失，则跳过该板块
-        d1 = sector.get('days_type_1')
-        d5 = sector.get('days_type_5')
-        d10 = sector.get('days_type_10')
-        if not (d1 and d5 and d10):
-            print("数据缺失，跳过该板块")
-            continue
-
-        # 检查必备的字段是否存在，若缺失则跳过
-        main_net_inflow_d10 = d10.get('main_net_inflow')
-        main_net_inflow_d5 = d5.get('main_net_inflow')
-        flow_1 = d1.get('main_net_inflow')
-        if main_net_inflow_d10 is None or main_net_inflow_d5 is None or flow_1 is None:
-            print("数据缺失，跳过该板块")
-            continue
-
-        # 计算关键指标
-        daily_10 = main_net_inflow_d10 / 10 if main_net_inflow_d10 else 0
-        daily_5 = main_net_inflow_d5 / 5 if main_net_inflow_d5 else 0
-        
-        # 大额资金分析预处理（检查数据是否存在）
-        lg_net_inflow_d10 = d10.get('lg_net_inflow')
-        lg_net_inflow_d5 = d5.get('lg_net_inflow')
-        lg_flow_1 = d1.get('lg_net_inflow')
-        if lg_net_inflow_d10 is None or lg_net_inflow_d5 is None or lg_flow_1 is None:
-            continue
-        lg_daily_10 = lg_net_inflow_d10 / 10 if lg_net_inflow_d10 else 0
-        lg_daily_5 = lg_net_inflow_d5 / 5 if lg_net_inflow_d5 else 0
-
-        # 核心条件判断
-        condition_continuity = (daily_10 <= daily_5 * 1.1) and (daily_5 <= flow_1 * 1.1)
-        # 避免除零错误，若daily_10为0，则用1e-6代替
-        strength_ratio = (flow_1 / (daily_10 + 1e-6)) * 100  
-        condition_strength = strength_ratio > 150
-
-        # 获取涨跌幅数据
-        d1_change_pct = d1.get('change_pct')
-        d5_change_pct = d5.get('change_pct')
-        d10_change_pct = d10.get('change_pct')
-        if d1_change_pct is None or d5_change_pct is None or d10_change_pct is None:
-            print("涨跌幅数据缺失，跳过该板块")
-            continue
-
-        # 量价健康度验证（注意：这里调整了顺序以匹配示例数据）
-        price_condition = (d1_change_pct > 0 and d10_change_pct > d5_change_pct and d1_change_pct < 7)
-
-        # 新增大额资金风险指标
-        lg_strength_ratio = round((lg_flow_1 / (lg_daily_10 + 1e-6) * 100), 1)
-        lg_acceleration = lg_daily_5 > lg_daily_10
-        lg_price_divergence = (lg_flow_1 > 0) and (d1_change_pct < 1)
-        lg_risk_indicators = {
-            "lg_strength_ratio": lg_strength_ratio,
-            "lg_acceleration": lg_acceleration,
-            "lg_price_divergence": lg_price_divergence
-        }
-
-        # 主力资金验证（检查必要的流入率字段）
-        d1_main_net_inflow_rate = d1.get('main_net_inflow_rate')
-        d5_main_net_inflow_rate = d5.get('main_net_inflow_rate')
-        d10_main_net_inflow_rate = d10.get('main_net_inflow_rate')
-        if d1_main_net_inflow_rate is None or d5_main_net_inflow_rate is None or d10_main_net_inflow_rate is None:
-            print("主力流入率数据缺失，跳过该板块")
-            continue
-        capital_condition = (d1_main_net_inflow_rate > 0.8 and
-                             d5_main_net_inflow_rate > 0.3 and 
-                             d10_main_net_inflow_rate > -0.1)
-        
-        if all([condition_continuity, condition_strength, price_condition, capital_condition]):
-            sector_data = {
-                "index_code": sector.get('index_code'),
-                "index_name": sector.get('index_name'),
-                "capital_flow": {
-                    "strength_ratio": round(strength_ratio, 1),
-                    "trend_type": "阶梯式流入" if strength_ratio < 300 else "短期过热",
-                    "daily_sequence": [
-                        {"days": 10, "net_inflow": d10.get('main_net_inflow'), "change_pct": d10.get('change_pct')},
-                        {"days": 5, "net_inflow": d5.get('main_net_inflow'), "change_pct": d5.get('change_pct')},
-                        {"days": 1, "net_inflow": d1.get('main_net_inflow'), "change_pct": d1.get('change_pct')}
-                    ]
-                },
-                "risk_indicators": {
-                    "small_capital_outflow": d1.get('sm_net_inflow', 0) < 0,
-                    "mid_capital_behavior": "跟风" if d1.get('mid_net_inflow_rate', 0) > 0 else "撤离",
-                    "large_capital_analysis": lg_risk_indicators
-                }
-            }
-            print("符合条件")
-            qualified_sectors.append(sector_data)
-        else:
-            print("不符合条件")
-    
-    return qualified_sectors
 
 def sort_predictions_by_score(input_file, output_file):
     """
