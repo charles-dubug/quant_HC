@@ -16,8 +16,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from pprint import pprint 
 
-gemini_client = genai.Client(api_key="")
-deepseek_client = OpenAI(api_key="", base_url="https://api.deepseek.com")
+gemini_client = genai.Client(api_key="AIzaSyB_i-e4wmc-U7dhXUsOUpq_Mmmnm5xGBhM")
+deepseek_client = OpenAI(api_key="sk-98e55e3e66554dd0a4803ef7d712a698", base_url="https://api.deepseek.com")
 
 # deepseek_client = OpenAI(api_key="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", base_url="https://openrouter.ai/api/v1")
  
@@ -978,3 +978,93 @@ def order_analysis(max_workers=3, top_n=50):
         json.dump(predictions, f, ensure_ascii=False, indent=2)
     
     print("Top stocks analysis complete!")
+
+def combined_analysis(stocks):
+    date = get_date_ten_trading_days_ago()
+    today = get_today_date()
+    for stock in stocks:
+        capital_flow_df = adata.stock.market.get_capital_flow(stock_code=stock, start_date=date, end_date=today)
+        stock_capital_flow = {
+                        "days_type_1": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        },
+                        "days_type_5": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        },
+                        "days_type_10": {
+                            "main_net_inflow": 0,
+                            "sm_net_inflow": 0,
+                            "mid_net_inflow": 0,
+                            "lg_net_inflow": 0,
+                            "max_net_inflow": 0
+                        }
+                    }
+        
+        for days_type in [1, 5, 10]:
+            period_data = capital_flow_df.head(days_type)
+
+            # Calculate sum of each metric
+            main_net_inflow = float(period_data['main_net_inflow'].astype(float).sum().round(1))
+            sm_net_inflow = float(period_data['sm_net_inflow'].astype(float).sum().round(1))
+            mid_net_inflow = float(period_data['mid_net_inflow'].astype(float).sum().round(1))
+            lg_net_inflow = float(period_data['lg_net_inflow'].astype(float).sum().round(1))
+            max_net_inflow = float(period_data['max_net_inflow'].astype(float).sum().round(1))
+            
+            # Update the dictionary
+            stock_capital_flow[f"days_type_{days_type}"] = {
+                "main_net_inflow": main_net_inflow,
+                "sm_net_inflow": sm_net_inflow,
+                "mid_net_inflow": mid_net_inflow,
+                "lg_net_inflow": lg_net_inflow,
+                "max_net_inflow": max_net_inflow
+            }
+
+        k_line_df = adata.stock.market.get_market(stock_code=stock, start_date=date, end_date=today, k_type=1, adjust_type=1)
+        stock_k = []
+
+        for _, row in k_line_df.iloc[::-1].iterrows():
+            k_line_item = {
+                "trade_date": row['trade_date'],
+                "open": float(row['open']),
+                "close": float(row['close']),
+                "high": float(row['high']),
+                "low": float(row['low']),
+                "volume": float(row['volume']),
+                "amount": float(row['amount']),
+                "change": float(row['change']),
+                "change_pct": float(row['change_pct']),
+                "turnover_ratio": float(row['turnover_ratio']),
+                "pre_close": float(row['pre_close'])
+            }
+
+            stock_k.append(k_line_item)
+        
+        merged_data = {
+            "stock_code": stock,
+            "capital_flow": stock_capital_flow,
+            "k-line": stock_k,
+        }
+
+        prompt_1 = get_analysis_prompt(merged_data, stock_analysis_system)
+
+        response = analysis_with_deepseek_robust(prompt_1)
+
+        merged_data['prediction']= response.get('prediction')
+        merged_data['reason']= response.get('reason')
+
+        prompt_2 = get_analysis_prompt(merged_data, order_analysis_system)
+
+        response = analysis_with_deepseek_robust(prompt_2)
+
+        pprint(response)
+        print("\n-------------------------------------------------------\n")
+             
+        
