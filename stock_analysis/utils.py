@@ -209,10 +209,13 @@ def sort_predictions_by_score(input_file, output_file):
     print(f"Sorted {len(sorted_predictions)} predictions by score (highest to lowest)")
     print(f"Saved to: {output_file}")
 
-def get_date_ten_trading_days_ago():
+def get_date_n_trading_days_ago(n=10):
     """
-    Returns the date of ten trading days (excluding weekends) before the current date
+    Returns the date of n trading days (excluding weekends) before the current date
     in 'YYYY-MM-DD' format, using China Standard Time (CST).
+    
+    Args:
+        n (int): Number of trading days to go back. Default is 10.
     
     Returns:
         str: Date string in 'YYYY-MM-DD' format
@@ -225,8 +228,8 @@ def get_date_ten_trading_days_ago():
     trading_days_count = 0
     days_to_go_back = 0
     
-    # Go back until we find 10 trading days
-    while trading_days_count < 10:
+    # Go back until we find n trading days
+    while trading_days_count < n:
         days_to_go_back += 1
         check_date = current_time_china - timedelta(days=days_to_go_back)
         
@@ -351,7 +354,7 @@ def compute_stock_ratings(top_n=None):
 
 
 def get_selected_stock_capital_flow(stock_codes, filter=None):
-    date = get_date_ten_trading_days_ago()
+    date = get_date_n_trading_days_ago()
     today = get_today_date()
 
     output_file = f'./data/{today}/stock_capital_flow.json'
@@ -657,7 +660,7 @@ def stock_analysis(max_workers=3, sorted=True):
     print("All processing complete!")
 
 def get_selected_stock_k(stock_codes):
-    date = get_date_ten_trading_days_ago()
+    date = get_date_n_trading_days_ago()
     today = get_today_date()
 
     output_file = f'./data/{today}/stock_k_line.json'
@@ -878,92 +881,139 @@ def order_analysis(max_workers=3, top_n=50):
     
     print("Top stocks analysis complete!")
 
-def combined_analysis(stocks):
-    date = get_date_ten_trading_days_ago()
+def combined_analysis(stock):
+    date = get_date_n_trading_days_ago()
     today = get_today_date()
-    for stock in stocks:
-        capital_flow_df = adata.stock.market.get_capital_flow(stock_code=stock, start_date=date, end_date=today)
-        stock_capital_flow = {
-                        "days_type_1": {
-                            "main_net_inflow": 0,
-                            "sm_net_inflow": 0,
-                            "mid_net_inflow": 0,
-                            "lg_net_inflow": 0,
-                            "max_net_inflow": 0
-                        },
-                        "days_type_5": {
-                            "main_net_inflow": 0,
-                            "sm_net_inflow": 0,
-                            "mid_net_inflow": 0,
-                            "lg_net_inflow": 0,
-                            "max_net_inflow": 0
-                        },
-                        "days_type_10": {
-                            "main_net_inflow": 0,
-                            "sm_net_inflow": 0,
-                            "mid_net_inflow": 0,
-                            "lg_net_inflow": 0,
-                            "max_net_inflow": 0
-                        }
+    capital_flow_df = adata.stock.market.get_capital_flow(stock_code=stock, start_date=date, end_date=today)
+    stock_capital_flow = {
+                    "days_type_1": {
+                        "main_net_inflow": 0,
+                        "sm_net_inflow": 0,
+                        "mid_net_inflow": 0,
+                        "lg_net_inflow": 0,
+                        "max_net_inflow": 0
+                    },
+                    "days_type_5": {
+                        "main_net_inflow": 0,
+                        "sm_net_inflow": 0,
+                        "mid_net_inflow": 0,
+                        "lg_net_inflow": 0,
+                        "max_net_inflow": 0
+                    },
+                    "days_type_10": {
+                        "main_net_inflow": 0,
+                        "sm_net_inflow": 0,
+                        "mid_net_inflow": 0,
+                        "lg_net_inflow": 0,
+                        "max_net_inflow": 0
                     }
+                }
+    
+    for days_type in [1, 5, 10]:
+        period_data = capital_flow_df.head(days_type)
+
+        # Calculate sum of each metric
+        main_net_inflow = float(period_data['main_net_inflow'].astype(float).sum().round(1))
+        sm_net_inflow = float(period_data['sm_net_inflow'].astype(float).sum().round(1))
+        mid_net_inflow = float(period_data['mid_net_inflow'].astype(float).sum().round(1))
+        lg_net_inflow = float(period_data['lg_net_inflow'].astype(float).sum().round(1))
+        max_net_inflow = float(period_data['max_net_inflow'].astype(float).sum().round(1))
         
-        for days_type in [1, 5, 10]:
-            period_data = capital_flow_df.head(days_type)
-
-            # Calculate sum of each metric
-            main_net_inflow = float(period_data['main_net_inflow'].astype(float).sum().round(1))
-            sm_net_inflow = float(period_data['sm_net_inflow'].astype(float).sum().round(1))
-            mid_net_inflow = float(period_data['mid_net_inflow'].astype(float).sum().round(1))
-            lg_net_inflow = float(period_data['lg_net_inflow'].astype(float).sum().round(1))
-            max_net_inflow = float(period_data['max_net_inflow'].astype(float).sum().round(1))
-            
-            # Update the dictionary
-            stock_capital_flow[f"days_type_{days_type}"] = {
-                "main_net_inflow": main_net_inflow,
-                "sm_net_inflow": sm_net_inflow,
-                "mid_net_inflow": mid_net_inflow,
-                "lg_net_inflow": lg_net_inflow,
-                "max_net_inflow": max_net_inflow
-            }
-
-        k_line_df = adata.stock.market.get_market(stock_code=stock, start_date=date, end_date=today, k_type=1, adjust_type=1)
-        stock_k = []
-
-        for _, row in k_line_df.iloc[::-1].iterrows():
-            k_line_item = {
-                "trade_date": row['trade_date'],
-                "open": float(row['open']),
-                "close": float(row['close']),
-                "high": float(row['high']),
-                "low": float(row['low']),
-                "volume": float(row['volume']),
-                "amount": float(row['amount']),
-                "change": float(row['change']),
-                "change_pct": float(row['change_pct']),
-                "turnover_ratio": float(row['turnover_ratio']),
-                "pre_close": float(row['pre_close'])
-            }
-
-            stock_k.append(k_line_item)
-        
-        merged_data = {
-            "stock_code": stock,
-            "capital_flow": stock_capital_flow,
-            "k-line": stock_k,
+        # Update the dictionary
+        stock_capital_flow[f"days_type_{days_type}"] = {
+            "main_net_inflow": main_net_inflow,
+            "sm_net_inflow": sm_net_inflow,
+            "mid_net_inflow": mid_net_inflow,
+            "lg_net_inflow": lg_net_inflow,
+            "max_net_inflow": max_net_inflow
         }
 
-        prompt_1 = get_analysis_prompt(merged_data, stock_analysis_system)
+    k_line_df = adata.stock.market.get_market(stock_code=stock, start_date=date, end_date=today, k_type=1, adjust_type=1)
+    stock_k = []
 
-        response = analysis_with_deepseek_robust(prompt_1)
+    for _, row in k_line_df.iloc[::-1].iterrows():
+        k_line_item = {
+            "trade_date": row['trade_date'],
+            "open": float(row['open']),
+            "close": float(row['close']),
+            "high": float(row['high']),
+            "low": float(row['low']),
+            "volume": float(row['volume']),
+            "amount": float(row['amount']),
+            "change": float(row['change']),
+            "change_pct": float(row['change_pct']),
+            "turnover_ratio": float(row['turnover_ratio']),
+            "pre_close": float(row['pre_close'])
+        }
 
-        merged_data['prediction']= response.get('prediction')
-        merged_data['reason']= response.get('reason')
+        stock_k.append(k_line_item)
+    
+    merged_data = {
+        "stock_code": stock,
+        "capital_flow": stock_capital_flow,
+        "k-line": stock_k,
+    }
 
-        prompt_2 = get_analysis_prompt(merged_data, order_analysis_system)
+    prompt_1 = get_analysis_prompt(merged_data, stock_analysis_system)
 
-        response = analysis_with_deepseek_robust(prompt_2)
+    response = analysis_with_deepseek_robust(prompt_1)
 
-        pprint(response)
-        print("\n-------------------------------------------------------\n")
-             
+    merged_data['prediction']= response.get('prediction')
+    merged_data['reason']= response.get('reason')
+
+    prompt_2 = get_analysis_prompt(merged_data, order_analysis_system)
+
+    response = analysis_with_deepseek_robust(prompt_2)
+    return response
         
+             
+def prev_day_analysis(max_workers=3, top_n=10):
+    date = get_date_n_trading_days_ago(1)
+    today = get_today_date()
+    stock_sorted = f'./data/{date}/stock_predictions_sorted.json'
+    output_file = f'./data/{today}/prev_day_analysis.json'
+
+    with open(stock_sorted, 'r', encoding='utf-8') as f:
+        stock_analysis = json.load(f)
+    
+    top_stocks = stock_analysis[:top_n]
+    stocks = [stock['stock_code'] for stock in top_stocks]
+
+    predictions = []
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_data = {executor.submit(combined_analysis, stock): stock for stock in stocks}
+            total_items = len(stocks)
+            completed = 0
+            pbar = tqdm(total=total_items, desc="Processing stocks", unit="stock")
+            
+            for future in concurrent.futures.as_completed(future_to_data):
+                data = future_to_data[future]
+                try:
+                    prediction = future.result()
+                    if prediction:
+                        predictions.append(prediction)
+                        completed += 1
+                        pbar.update(1)
+                        pbar.set_postfix({"completed": f"{completed}/{total_items}", 
+                                        "percent": f"{completed/total_items*100:.1f}%"})
+                        
+                        # Save after each successful prediction
+                        with open(output_file, 'w', encoding='utf-8') as f:
+                            json.dump(predictions, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    print(f"Exception occurred while processing {data['stock_code']}: {str(e)}")
+            
+            pbar.close()
+    except KeyboardInterrupt:
+        print("\nGracefully shutting down... Saving current progress...")
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(predictions, f, ensure_ascii=False, indent=2)
+        print("Progress saved. Program stopped.")
+        exit(0)
+
+    # Final save of all predictions
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(predictions, f, ensure_ascii=False, indent=2)
+    
+    print("All processing complete!")
