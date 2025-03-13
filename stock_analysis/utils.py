@@ -4,7 +4,7 @@ from openai import OpenAI
 from pydantic import BaseModel
 from tqdm import tqdm
 from prompts import news_cn_tech, news_analysis, concept_analysis_system, stock_analysis_system, order_analysis_system
-from config import GEMINI_API_KEY, DEEPSEEK_API_KEY
+#from config import GEMINI_API_KEY, DEEPSEEK_API_KEY
 from datetime import datetime, timedelta
 import pytz
 import json
@@ -17,8 +17,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from pprint import pprint 
 
-gemini_client = genai.Client(api_key=GEMINI_API_KEY)
-deepseek_client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+#gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+#deepseek_client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
 # deepseek_client = OpenAI(api_key="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", base_url="https://openrouter.ai/api/v1")
  
